@@ -1,0 +1,737 @@
+3.2.3 (Media Mark)
+ad44fd51c416d93c5929a6b4da74f43c3a7b711a
+o:Sass::Tree::RootNode	:@template"‡<// Mixins.scss
+// Snippets of reusable CSS to develop faster and keep code readable
+// ----------------------------------------------------------------------------
+
+// UTILITY MIXINS
+// ----------------------------------------------------------------------------
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+@mixin clearfix
+  *zoom: 1
+  &:before,
+  &:after
+    display: table
+    content: ""
+  &:after
+    clear: both
+
+// Webkit-style focus
+// ----------------------------------------------------------------------------
+@mixin tab-focus
+  // Default
+  outline: thin dotted #333
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color
+  outline-offset: -2px
+
+// Center-align a block level element
+// ----------------------------------------------------------------------------
+@mixin center-block
+  display: block
+  margin-left: auto
+  margin-right: auto
+
+// IE7 inline-block
+// ----------------------------------------------------------------------------
+@mixin ie7-inline-block
+  *display: inline
+  /* IE7 inline-block hack
+  *zoom: 1
+
+// IE7 likes to collapse whitespace on either side of the inline-block elements.
+// Ems because we're attempting to match the width of a space character. Left
+// version is for form buttons, which typically come after other elements, and
+// right version is for icons, which come before. Applying both is ok, but it will
+// mean that space between those elements will be .6em (~2 space characters) in IE7,
+// instead of the 1 space in other browsers.
+@mixin ie7-restore-left-whitespace
+  *margin-left: .3em
+  &:first-child
+    *margin-left: 0
+
+@mixin ie7-restore-right-whitespace
+  *margin-right: .3em
+  &:last-child
+    *margin-left: 0
+
+// Sizing shortcuts
+// ----------------------------------------------------------------------------
+@mixin size($height: 5px, $width: 5px)
+  width: $width
+  height: $height
+
+@mixin square($size: 5px)
+  +size($size, $size)
+
+// Placeholder text
+// ----------------------------------------------------------------------------
+@mixin placeholder($color: $placeholderText)
+  \:-moz-placeholder
+    color: $color
+  \::-webkit-input-placeholder
+    color: $color
+
+// Text overflow
+// ----------------------------------------------------------------------------
+// Requires inline-block or block for proper styling
+@mixin text-overflow
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+// New image replacement
+// ----------------------------------------------------------------------------
+// Source: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+@mixin hide-text
+  overflow: hidden
+  text-indent: 100%
+  white-space: nowrap
+
+// FONTS
+// ----------------------------------------------------------------------------
+
+// Font Stacks
+@mixin font-family-serif
+  font-family: Georgia, "Times New Roman", Times, serif
+
+@mixin font-family-sans-serif
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+
+@mixin font-family-monospace
+  font-family: Menlo, Monaco, "Courier New", monospace
+
+@mixin font-shorthand($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
+  font-size: $size
+  font-weight: $weight
+  line-height: $lineHeight
+
+@mixin font-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
+  +font-family-serif
+  +font-shorthand($size, $weight, $lineHeight)
+
+@mixin font-sans-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
+  +font-family-sans-serif
+  +font-shorthand($size, $weight, $lineHeight)
+
+@mixin font-monospace($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight)
+  +font-family-monospace
+  +font-shorthand($size, $weight, $lineHeight)
+
+
+// CSS3 PROPERTIES
+// ----------------------------------------------------------------------------
+
+// Border Radius
+@mixin border-radius($radius: 5px)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  border-radius: $radius
+
+// Drop shadows
+@mixin box-shadow($shadow: 0 1px 3px rgba(0, 0, 0, 0.25))
+  -webkit-box-shadow: $shadow
+  -moz-box-shadow: $shadow
+  box-shadow: $shadow
+
+// Transitions
+@mixin transition($transition)
+  -webkit-transition: $transition
+  -moz-transition: $transition
+  -ms-transition: $transition
+  -o-transition: $transition
+  transition: $transition
+
+// Transformations
+@mixin rotate($degrees)
+  -webkit-transform: rotate($degrees)
+  -moz-transform: rotate($degrees)
+  -ms-transform: rotate($degrees)
+  -o-transform: rotate($degrees)
+  transform: rotate($degrees)
+
+@mixin scale($ratio)
+  -webkit-transform: scale($ratio)
+  -moz-transform: scale($ratio)
+  -ms-transform: scale($ratio)
+  -o-transform: scale($ratio)
+  transform: scale($ratio)
+
+@mixin translate($x: 0, $y: 0)
+  -webkit-transform: translate($x, $y)
+  -moz-transform: translate($x, $y)
+  -ms-transform: translate($x, $y)
+  -o-transform: translate($x, $y)
+  transform: translate($x, $y)
+
+@mixin skew($x: 0, $y: 0)
+  -webkit-transform: skew($x, $y)
+  -moz-transform: skew($x, $y)
+  -ms-transform: skew($x, $y)
+  -o-transform: skew($x, $y)
+  transform: skew($x, $y)
+
+@mixin translate3d($x: 0, $y: 0, $z: 0)
+  -webkit-transform: translate($x, $y, $z)
+  -moz-transform: translate($x, $y, $z)
+  -ms-transform: translate($x, $y, $z)
+  -o-transform: translate($x, $y, $z)
+  transform: translate($x, $y, $z)
+
+// Background clipping
+// Heads up: FF 3.6 and under need "padding" instead of "padding-box"
+@mixin background-clip($clip)
+  -webkit-background-clip: $clip
+  -moz-background-clip: $clip
+  background-clip: $clip
+
+// Background sizing
+@mixin background-size($size)
+  -webkit-background-size: $size
+  -moz-background-size: $size
+  -o-background-size: $size
+  background-size: $size
+
+// Box sizing
+@mixin box-sizing($boxmodel)
+  -webkit-box-sizing: $boxmodel
+  -moz-box-sizing: $boxmodel
+  -ms-box-sizing: $boxmodel
+  box-sizing: $boxmodel
+
+// User select
+// For selecting text on the page
+@mixin user-select($select)
+  -webkit-user-select: $select
+  -moz-user-select: $select
+  -o-user-select: $select
+  user-select: $select
+
+// Resize anything
+@mixin resizable($direction: both)
+  resize: $direction
+  // Options: horizontal, vertical, both
+  overflow: auto
+  // Safari fix
+
+// CSS3 Content Columns
+@mixin content-columns($columnCount, $columnGap: $gridColumnGutter)
+  -webkit-column-count: $columnCount
+  -moz-column-count: $columnCount
+  column-count: $columnCount
+  -webkit-column-gap: $columnGap
+  -moz-column-gap: $columnGap
+  column-gap: $columnGap
+
+// Opacity
+@mixin opacity($opacity: 100)
+  opacity: $opacity / 100
+  filter: alpha(opacity = $opacity)
+
+// BACKGROUNDS
+// ----------------------------------------------------------------------------
+
+// Cirro's version of the Bootstrap well
+@mixin inset
+  border-bottom: 1px solid white
+  border-right: 1px solid white
+  background: darken($bg, 3)
+  +box-shadow(inset #999 0 1px 2px)
+  +border-radius(4px)
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+@mixin translucent-background($color: $white, $alpha: 1)
+  background-color: hsla(hue($color), saturation($color), lightness($color), $alpha)
+
+@mixin translucent-border($color: $white, $alpha: 1)
+  border-color: hsla(hue($color), saturation($color), lightness($color), $alpha)
+  +background-clip(padding-box)
+
+// Gradient Bar Colors for buttons and alerts
+@mixin gradientBar($primaryColor, $secondaryColor)
+  +gradient-vertical($primaryColor, $secondaryColor)
+  border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%)
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fade-in(rgba(0, 0, 0, 0.1), 0.15)
+
+// Gradients
+@mixin gradient-horizontal($startColor: #555555, $endColor: #333333)
+  background-color: $endColor
+  background-image: -moz-linear-gradient(left, $startColor, $endColor)
+  // FF 3.6+
+  background-image: -ms-linear-gradient(left, $startColor, $endColor)
+  // IE10
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor))
+  // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor)
+  // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(left, $startColor, $endColor)
+  // Opera 11.10
+  background-image: linear-gradient(left, $startColor, $endColor)
+  // Le standard
+  background-repeat: repeat-x
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1)
+  // IE9 and down
+
+@mixin gradient-vertical($startColor: #555555, $endColor: #333333)
+  background-color: mix($startColor, $endColor, 60%)
+  background-image: -moz-linear-gradient(top, $startColor, $endColor)
+  // FF 3.6+
+  background-image: -ms-linear-gradient(top, $startColor, $endColor)
+  // IE10
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor))
+  // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor)
+  // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(top, $startColor, $endColor)
+  // Opera 11.10
+  background-image: linear-gradient(top, $startColor, $endColor)
+  // The standard
+  background-repeat: repeat-x
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0)
+  // IE9 and down
+
+@mixin gradient-directional($startColor: #555555, $endColor: #333333, $deg: 45deg)
+  background-color: $endColor
+  background-repeat: repeat-x
+  background-image: -moz-linear-gradient($deg, $startColor, $endColor)
+  // FF 3.6+
+  background-image: -ms-linear-gradient($deg, $startColor, $endColor)
+  // IE10
+  background-image: -webkit-linear-gradient($deg, $startColor, $endColor)
+  // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient($deg, $startColor, $endColor)
+  // Opera 11.10
+  background-image: linear-gradient($deg, $startColor, $endColor)
+  // The standard
+
+@mixin gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f)
+  background-color: mix($midColor, $endColor, 80%)
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor))
+  background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor)
+  background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop, $endColor)
+  background-image: -ms-linear-gradient($startColor, $midColor $colorStop, $endColor)
+  background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor)
+  background-image: linear-gradient($startColor, $midColor $colorStop, $endColor)
+  background-repeat: no-repeat
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0)
+  // IE9 and down, gets no color-stop at all for proper fallback
+
+@mixin gradient-radial($innerColor: #555555, $outerColor: #333333)
+  background-color: $outerColor
+  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($innerColor), to($outerColor))
+  background-image: -webkit-radial-gradient(circle, $innerColor, $outerColor)
+  background-image: -moz-radial-gradient(circle, $innerColor, $outerColor)
+  background-image: -ms-radial-gradient(circle, $innerColor, $outerColor)
+  background-repeat: no-repeat
+  // Opera cannot do radial gradients yet
+
+@mixin gradient-striped($color, $angle: -45deg)
+  background-color: $color
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent))
+  background-image: -webkit-linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -moz-linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -ms-linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -o-linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  //background-image: linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+
+// Reset filters for IE
+@mixin reset-filter
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+
+// COMPONENT MIXINS
+// ----------------------------------------------------------------------------
+
+// Horizontal dividers
+// -------------------------
+// Dividers (basically an hr) within dropdowns and nav lists
+@mixin nav-divider
+  height: 1px
+  margin: $baseLineHeight / 2 - 1 1px
+  // 8px 1px
+  overflow: hidden
+  background-color: #e5e5e5
+  border-bottom: 1px solid $white
+  // IE7 needs a set width since we gave a height. Restricting just
+  // to IE7 to keep the 1px left/right space in other browsers.
+  // It is unclear where IE is getting the extra space that we need
+  // to negative-margin away, but so it goes.
+  *width: 100%
+  *margin: -5px 0 5px
+
+// Button backgrounds
+// ----------------------------------------------------------------------------
+@mixin buttonBackground($startColor, $endColor)
+  // gradientBar will set the background to a pleasing blend of these, to support IE<=9
+  +gradientBar($startColor, $endColor)
+  +reset-filter
+  // in these cases the gradient won't cover the background, so we override
+  &:hover, &:active, &.active, &.disabled, &[disabled]
+    background-color: $endColor
+  // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
+  &:active,
+  &.active
+    background-color: darken($endColor, 10%) #{"\9"}
+
+// Navbar vertical align
+// ----------------------------------------------------------------------------
+// Vertically center elements in the navbar.
+// Example: an element has a height of 30px, so write out `.navbarVerticalAlign(30px);` to calculate the appropriate top margin.
+@mixin navbarVerticalAlign($elementHeight)
+  margin-top: ($navbarHeight - $elementHeight) / 2
+
+// POPOVER ARROWS
+// ----------------------------------------------------------------------------
+// For tipsies and popovers
+@mixin popoverArrow-top($arrowWidth: 5px, $color: $black)
+  bottom: 0
+  left: 50%
+  margin-left: -$arrowWidth
+  border-left: $arrowWidth solid transparent
+  border-right: $arrowWidth solid transparent
+  border-top: $arrowWidth solid $color
+
+@mixin popoverArrow-left($arrowWidth: 5px, $color: $black)
+  top: 50%
+  right: 0
+  margin-top: -$arrowWidth
+  border-top: $arrowWidth solid transparent
+  border-bottom: $arrowWidth solid transparent
+  border-left: $arrowWidth solid $color
+
+@mixin popoverArrow-bottom($arrowWidth: 5px, $color: $black)
+  top: 0
+  left: 50%
+  margin-left: -$arrowWidth
+  border-left: $arrowWidth solid transparent
+  border-right: $arrowWidth solid transparent
+  border-bottom: $arrowWidth solid $color
+
+@mixin popoverArrow-right($arrowWidth: 5px, $color: $black)
+  top: 50%
+  left: 0
+  margin-top: -$arrowWidth
+  border-top: $arrowWidth solid transparent
+  border-bottom: $arrowWidth solid transparent
+  border-right: $arrowWidth solid $color
+
+:@has_childrenT:@options{ :@children[\o:Sass::Tree::CommentNode:
+@type:silent;@;	[ :@value[
+"// Mixins.scss"
+"I// Snippets of reusable CSS to develop faster and keep code readable"
+"T// ----------------------------------------------------------------------------:@filename"9/Users/brett/sites/polco_ui/public/sass/_mixins.sass:
+@lineio;
+;;;@;	[ ;["// UTILITY MIXINS"
+"T// ----------------------------------------------------------------------------;@;i
+o;
+;;;@;	[ ;[
+"// Clearfix"
+"// --------"
+"2// For clearing floats like a boss h5bp.com/q;@;io:Sass::Tree::MixinDefNode:
+@name"clearfix;T;@;	[o:Sass::Tree::PropNode;["
+*zoom;@:
+@tabsi ;	[ :@prop_syntax:new;o:Sass::Script::Number:@numerator_units[ ;@:@original"1;i:@denominator_units[ ;i;@;io:Sass::Tree::RuleNode;T;@;i ;	[o;;["display;@;i ;	[ ;;;o:Sass::Script::String	;:identifier;@;"
+table;i;@;io;;["content;@;i ;	[ ;;;o;	;:string;@;" ;i;@;i:
+@rule["&:before,
+&:after;@:@parsed_ruleso:"Sass::Selector::CommaSequence:@members[o:Sass::Selector::Sequence;![o:#Sass::Selector::SimpleSequence
+;![o:Sass::Selector::Parent;" ;io:Sass::Selector::Pseudo
+;["before;:
+class;@B;i:	@arg0:@sourceso:Set:
+@hash{ :@subject0;@B;io;";!["
+o;#
+;![o;$;@B;io;%
+;["
+after;;&;@B;i;'0;(o;);*{ ;+0;@B;i;@B;i;io;;T;@;i ;	[o;;["
+clear;@;i ;	[ ;;;o;	;;;@;"	both;i;@;i;["&:after;@;o; ;![o;";![o;#
+;![o;$;@;io;%
+;["
+after;;&;@;i;'0;(o;);*{ ;+0;@;i;@;i;i:@splat0;@;i:
+@args[ o;
+;;;@;	[ ;["// Webkit-style focus"
+"T// ----------------------------------------------------------------------------;@;io;;"tab-focus;T;@;	[
+o;
+;;;@;	[ ;["// Default;@;io;;["outline;@;i ;	[ ;;;o:Sass::Script::List	;@:@separator:
+space;[o;	;;;@;"	thin;io;	;;;@;"dotted;io:Sass::Script::Color	:@attrs{	:redi8:
+alphai:
+greeni8:	bluei8;@;0;i;i;@;io;
+;;;@;	[ ;["// Webkit;@;io;;["outline;@;i ;	[ ;;;o;.	;@;/;0;[o;;["px;@;"5px;i
+;[ ;io;	;;;@;"	auto;io;	;;;@;"-webkit-focus-ring-color;i;i;@;io;;["outline-offset;@;i ;	[ ;;;o;;["px;@;"	-2px;i˘;[ ;i ;@;i ;,0;@;i;-[ o;
+;;;@;	[ ;["*// Center-align a block level element"
+"T// ----------------------------------------------------------------------------;@;i"o;;"center-block;T;@;	[o;;["display;@;i ;	[ ;;;o;	;;;@;"
+block;i%;@;i%o;;["margin-left;@;i ;	[ ;;;o;	;;;@;"	auto;i&;@;i&o;;["margin-right;@;i ;	[ ;;;o;	;;;@;"	auto;i';@;i';,0;@;i$;-[ o;
+;;;@;	[ ;["// IE7 inline-block"
+"T// ----------------------------------------------------------------------------;@;i)o;;"ie7-inline-block;T;@;	[o;;["*display;@;i ;	[ ;;;o;	;;;@;"inline;i,;@;i,o;
+;:normal;@;	[ ;[" /* IE7 inline-block hack */;@;i-o;;["
+*zoom;@;i ;	[ ;;;o;;[ ;@;"1;i;@*;i.;@;i.;,0;@;i+;-[ o;
+;;;@;	[ ;["U// IE7 likes to collapse whitespace on either side of the inline-block elements."
+"R// Ems because we're attempting to match the width of a space character. Left"
+"S// version is for form buttons, which typically come after other elements, and"
+"W// right version is for icons, which come before. Applying both is ok, but it will"
+"Y// mean that space between those elements will be .6em (~2 space characters) in IE7,"
+"1// instead of the 1 space in other browsers.;@;i0o;;" ie7-restore-left-whitespace;T;@;	[o;;["*margin-left;@;i ;	[ ;;;o;;["em;@;"
+0.3em;f0.29999999999999999 33;[ ;i7;@;i7o;;T;@;i ;	[o;;["*margin-left;@;i ;	[ ;;;o;;[ ;@;"0;i ;@*;i9;@;i9;["&:first-child;@;o; ;![o;";![o;#
+;![o;$;@;i8o;%
+;["first-child;;&;@;i8;'0;(o;);*{ ;+0;@;i8;@;i8;i8;,0;@;i6;-[ o;;"!ie7-restore-right-whitespace;T;@;	[o;;["*margin-right;@;i ;	[ ;;;o;;["em;@;"
+0.3em;f0.29999999999999999 33;[ ;i<;@;i<o;;T;@;i ;	[o;;["*margin-left;@;i ;	[ ;;;o;;[ ;@;"0;i ;@*;i>;@;i>;["&:last-child;@;o; ;![o;";![o;#
+;![o;$;@;i=o;%
+;["last-child;;&;@;i=;'0;(o;);*{ ;+0;@;i=;@;i=;i=;,0;@;i;;-[ o;
+;;;@;	[ ;["// Sizing shortcuts"
+"T// ----------------------------------------------------------------------------;@;i@o;;"	size;T;@;	[o;;["
+width;@;i ;	[ ;;;o:Sass::Script::Variable	;"
+width;@:@underscored_name"
+width;iC;@;iCo;;["height;@;i ;	[ ;;;o;8	;"height;@;9"height;iD;@;iD;,0;@;iB;-[[o;8;"height;@;9"heighto;;["px;@;"5px;i
+;[ ;iB[o;8;"
+width;@;9"
+widtho;;["px;@;"5px;i
+;[ ;iBo;;"square;T;@;	[o:Sass::Tree::MixinNode;"	size;@;	[ ;,0;@;iG:@keywords{ ;-[o;8	;"	size;@;9"	size;iGo;8	;"	size;@;9"	size;iG;,0;@;iF;-[[o;8;"	size;@;9"	sizeo;;["px;@;"5px;i
+;[ ;iFo;
+;;;@;	[ ;["// Placeholder text"
+"T// ----------------------------------------------------------------------------;@;iIo;;"placeholder;T;@;	[o;;T;@;i ;	[o;;["
+color;@;i ;	[ ;;;o;8	;"
+color;@;9"
+color;iM;@;iM;[":-moz-placeholder;@;o; ;![o;";![o;#
+;![o;%
+;["-moz-placeholder;;&;@;iL;'0;(o;);*{ ;+0;@;iL;@;iL;iLo;;T;@;i ;	[o;;["
+color;@;i ;	[ ;;;o;8	;"
+color;@;9"
+color;iO;@;iO;[" ::-webkit-input-placeholder;@;o; ;![o;";![o;#
+;![o;%
+;["-webkit-input-placeholder;:element;@;iN;'0;(o;);*{ ;+0;@;iN;@;iN;iN;,0;@;iK;-[[o;8;"
+color;@;9"
+coloro;8	;"placeholderText;@;9"placeholderText;iKo;
+;;;@;	[ ;[
+"// Text overflow"
+"T// ----------------------------------------------------------------------------"
+"9// Requires inline-block or block for proper styling;@;iQo;;"text-overflow;T;@;	[o;;["overflow;@;i ;	[ ;;;o;	;;;@;"hidden;iU;@;iUo;;["text-overflow;@;i ;	[ ;;;o;	;;;@;"ellipsis;iV;@;iVo;;["white-space;@;i ;	[ ;;;o;	;;;@;"nowrap;iW;@;iW;,0;@;iT;-[ o;
+;;;@;	[ ;[
+"// New image replacement"
+"T// ----------------------------------------------------------------------------"
+"b// Source: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/;@;iYo;;"hide-text;T;@;	[o;;["overflow;@;i ;	[ ;;;o;	;;;@;"hidden;i];@;i]o;;["text-indent;@;i ;	[ ;;;o;;["%;@;"	100%;ii;[ ;i^;@;i^o;;["white-space;@;i ;	[ ;;;o;	;;;@;"nowrap;i_;@;i_;,0;@;i\;-[ o;
+;;;@;	[ ;["// FONTS"
+"T// ----------------------------------------------------------------------------;@;iao;
+;;;@;	[ ;["// Font Stacks;@;ido;;"font-family-serif;T;@;	[o;;["font-family;@;i ;	[ ;;;o;.	;@;/:
+comma;[	o;	;;;@;"Georgia;ifo;	;;;@;"Times New Roman;ifo;	;;;@;"
+Times;ifo;	;;;@;"
+serif;if;if;@;if;,0;@;ie;-[ o;;"font-family-sans-serif;T;@;	[o;;["font-family;@;i ;	[ ;;;o;.	;@;/;=;[	o;	;;;@;"Helvetica Neue;iio;	;;;@;"Helvetica;iio;	;;;@;"
+Arial;iio;	;;;@;"sans-serif;ii;ii;@;ii;,0;@;ih;-[ o;;"font-family-monospace;T;@;	[o;;["font-family;@;i ;	[ ;;;o;.	;@;/;=;[	o;	;;;@;"
+Menlo;ilo;	;;;@;"Monaco;ilo;	;;;@;"Courier New;ilo;	;;;@;"monospace;il;il;@;il;,0;@;ik;-[ o;;"font-shorthand;T;@;	[o;;["font-size;@;i ;	[ ;;;o;8	;"	size;@;9"	size;io;@;ioo;;["font-weight;@;i ;	[ ;;;o;8	;"weight;@;9"weight;ip;@;ipo;;["line-height;@;i ;	[ ;;;o;8	;"lineHeight;@;9"lineHeight;iq;@;iq;,0;@;in;-[[o;8;"	size;@;9"	sizeo;8	;"baseFontSize;@;9"baseFontSize;in[o;8;"weight;@;9"weighto;	;;;@;"normal;in[o;8;"lineHeight;@;9"lineHeighto;8	;"baseLineHeight;@;9"baseLineHeight;ino;;"font-serif;T;@;	[o;:;"font-family-serif;@;	[ ;,0;@;it;;{ ;-[ o;:;"font-shorthand;@;	[ ;,0;@;iu;;{ ;-[o;8	;"	size;@;9"	size;iuo;8	;"weight;@;9"weight;iuo;8	;"lineHeight;@;9"lineHeight;iu;,0;@;is;-[[o;8;"	size;@;9"	sizeo;8	;"baseFontSize;@;9"baseFontSize;is[o;8;"weight;@;9"weighto;	;;;@;"normal;is[o;8;"lineHeight;@;9"lineHeighto;8	;"baseLineHeight;@;9"baseLineHeight;iso;;"font-sans-serif;T;@;	[o;:;"font-family-sans-serif;@;	[ ;,0;@;ix;;{ ;-[ o;:;"font-shorthand;@;	[ ;,0;@;iy;;{ ;-[o;8	;"	size;@;9"	size;iyo;8	;"weight;@;9"weight;iyo;8	;"lineHeight;@;9"lineHeight;iy;,0;@;iw;-[[o;8;"	size;@;9"	sizeo;8	;"baseFontSize;@;9"baseFontSize;iw[o;8;"weight;@;9"weighto;	;;;@;"normal;iw[o;8;"lineHeight;@;9"lineHeighto;8	;"baseLineHeight;@;9"baseLineHeight;iwo;;"font-monospace;T;@;	[o;:;"font-family-monospace;@;	[ ;,0;@;i|;;{ ;-[ o;:;"font-shorthand;@;	[ ;,0;@;i};;{ ;-[o;8	;"	size;@;9"	size;i}o;8	;"weight;@;9"weight;i}o;8	;"lineHeight;@;9"lineHeight;i};,0;@;i{;-[[o;8;"	size;@;9"	sizeo;8	;"baseFontSize;@;9"baseFontSize;i{[o;8;"weight;@;9"weighto;	;;;@;"normal;i{[o;8;"lineHeight;@;9"lineHeighto;8	;"baseLineHeight;@;9"baseLineHeight;i{o;
+;;;@;	[ ;["// CSS3 PROPERTIES"
+"T// ----------------------------------------------------------------------------;@;i{o;
+;;;@;	[ ;["// Border Radius;@;i~o;;"border-radius;T;@;	[o;;["-webkit-border-radius;@;i ;	[ ;;;o;8	;"radius;@;9"radius;iÄ;@;iÄo;;["-moz-border-radius;@;i ;	[ ;;;o;8	;"radius;@;9"radius;iÅ;@;iÅo;;["border-radius;@;i ;	[ ;;;o;8	;"radius;@;9"radius;iÇ;@;iÇ;,0;@;i;-[[o;8;"radius;@;9"radiuso;;["px;@;"5px;i
+;[ ;io;
+;;;@;	[ ;["// Drop shadows;@;iÑo;;"box-shadow;T;@;	[o;;["-webkit-box-shadow;@;i ;	[ ;;;o;8	;"shadow;@;9"shadow;iÜ;@;iÜo;;["-moz-box-shadow;@;i ;	[ ;;;o;8	;"shadow;@;9"shadow;iá;@;iáo;;["box-shadow;@;i ;	[ ;;;o;8	;"shadow;@;9"shadow;ià;@;ià;,0;@;iÖ;-[[o;8;"shadow;@;9"shadowo;.	;@;/;0;[	o;;[ ;@;"0;i ;@*;iÖo;;["px;@;"1px;i;[ ;iÖo;;["px;@;"3px;i;[ ;iÖo:Sass::Script::Funcall;"	rgba;@;,0;iÖ;;{ ;-[	o;;[ ;@;"0;i ;@*;iÖo;;[ ;@;"0;i ;@*;iÖo;;[ ;@;"0;i ;@*;iÖo;;[ ;@;"	0.25;f	0.25;@*;iÖ;iÖo;
+;;;@;	[ ;["// Transitions;@;iäo;;"transition;T;@;	[
+o;;["-webkit-transition;@;i ;	[ ;;;o;8	;"transition;@;9"transition;iå;@;iåo;;["-moz-transition;@;i ;	[ ;;;o;8	;"transition;@;9"transition;iç;@;iço;;["-ms-transition;@;i ;	[ ;;;o;8	;"transition;@;9"transition;ié;@;iéo;;["-o-transition;@;i ;	[ ;;;o;8	;"transition;@;9"transition;iè;@;ièo;;["transition;@;i ;	[ ;;;o;8	;"transition;@;9"transition;iê;@;iê;,0;@;iã;-[[o;8;"transition;@;9"transition0o;
+;;;@;	[ ;["// Transformations;@;iío;;"rotate;T;@;	[
+o;;["-webkit-transform;@;i ;	[ ;;;o;>;"rotate;@;,0;iî;;{ ;-[o;8	;"degrees;@;9"degrees;iî;@;iîo;;["-moz-transform;@;i ;	[ ;;;o;>;"rotate;@;,0;iï;;{ ;-[o;8	;"degrees;@;9"degrees;iï;@;iïo;;["-ms-transform;@;i ;	[ ;;;o;>;"rotate;@;,0;iñ;;{ ;-[o;8	;"degrees;@;9"degrees;iñ;@;iño;;["-o-transform;@;i ;	[ ;;;o;>;"rotate;@;,0;ió;;{ ;-[o;8	;"degrees;@;9"degrees;ió;@;ióo;;["transform;@;i ;	[ ;;;o;>;"rotate;@;,0;iò;;{ ;-[o;8	;"degrees;@;9"degrees;iò;@;iò;,0;@;iì;-[[o;8;"degrees;@;9"degrees0o;;"
+scale;T;@;	[
+o;;["-webkit-transform;@;i ;	[ ;;;o;>;"
+scale;@;,0;iõ;;{ ;-[o;8	;"
+ratio;@;9"
+ratio;iõ;@;iõo;;["-moz-transform;@;i ;	[ ;;;o;>;"
+scale;@;,0;iú;;{ ;-[o;8	;"
+ratio;@;9"
+ratio;iú;@;iúo;;["-ms-transform;@;i ;	[ ;;;o;>;"
+scale;@;,0;iù;;{ ;-[o;8	;"
+ratio;@;9"
+ratio;iù;@;iùo;;["-o-transform;@;i ;	[ ;;;o;>;"
+scale;@;,0;iû;;{ ;-[o;8	;"
+ratio;@;9"
+ratio;iû;@;iûo;;["transform;@;i ;	[ ;;;o;>;"
+scale;@;,0;iü;;{ ;-[o;8	;"
+ratio;@;9"
+ratio;iü;@;iü;,0;@;iö;-[[o;8;"
+ratio;@;9"
+ratio0o;;"translate;T;@;	[
+o;;["-webkit-transform;@;i ;	[ ;;;o;>;"translate;@;,0;i¢;;{ ;-[o;8	;"x;@;9"x;i¢o;8	;"y;@;9"y;i¢;@;i¢o;;["-moz-transform;@;i ;	[ ;;;o;>;"translate;@;,0;i£;;{ ;-[o;8	;"x;@;9"x;i£o;8	;"y;@;9"y;i£;@;i£o;;["-ms-transform;@;i ;	[ ;;;o;>;"translate;@;,0;i§;;{ ;-[o;8	;"x;@;9"x;i§o;8	;"y;@;9"y;i§;@;i§o;;["-o-transform;@;i ;	[ ;;;o;>;"translate;@;,0;i•;;{ ;-[o;8	;"x;@;9"x;i•o;8	;"y;@;9"y;i•;@;i•o;;["transform;@;i ;	[ ;;;o;>;"translate;@;,0;i¶;;{ ;-[o;8	;"x;@;9"x;i¶o;8	;"y;@;9"y;i¶;@;i¶;,0;@;i°;-[[o;8;"x;@;9"xo;;[ ;@;"0;i ;@*;i°[o;8;"y;@;9"yo;;[ ;@;"0;i ;@*;i°o;;"	skew;T;@;	[
+o;;["-webkit-transform;@;i ;	[ ;;;o;>;"	skew;@;,0;i©;;{ ;-[o;8	;"x;@;9"x;i©o;8	;"y;@;9"y;i©;@;i©o;;["-moz-transform;@;i ;	[ ;;;o;>;"	skew;@;,0;i™;;{ ;-[o;8	;"x;@;9"x;i™o;8	;"y;@;9"y;i™;@;i™o;;["-ms-transform;@;i ;	[ ;;;o;>;"	skew;@;,0;i´;;{ ;-[o;8	;"x;@;9"x;i´o;8	;"y;@;9"y;i´;@;i´o;;["-o-transform;@;i ;	[ ;;;o;>;"	skew;@;,0;i¨;;{ ;-[o;8	;"x;@;9"x;i¨o;8	;"y;@;9"y;i¨;@;i¨o;;["transform;@;i ;	[ ;;;o;>;"	skew;@;,0;i≠;;{ ;-[o;8	;"x;@;9"x;i≠o;8	;"y;@;9"y;i≠;@;i≠;,0;@;i®;-[[o;8;"x;@;9"xo;;[ ;@;"0;i ;@*;i®[o;8;"y;@;9"yo;;[ ;@;"0;i ;@*;i®o;;"translate3d;T;@;	[
+o;;["-webkit-transform;@;i ;	[ ;;;o;>;"translate;@;,0;i∞;;{ ;-[o;8	;"x;@;9"x;i∞o;8	;"y;@;9"y;i∞o;8	;"z;@;9"z;i∞;@;i∞o;;["-moz-transform;@;i ;	[ ;;;o;>;"translate;@;,0;i±;;{ ;-[o;8	;"x;@;9"x;i±o;8	;"y;@;9"y;i±o;8	;"z;@;9"z;i±;@;i±o;;["-ms-transform;@;i ;	[ ;;;o;>;"translate;@;,0;i≤;;{ ;-[o;8	;"x;@;9"x;i≤o;8	;"y;@;9"y;i≤o;8	;"z;@;9"z;i≤;@;i≤o;;["-o-transform;@;i ;	[ ;;;o;>;"translate;@;,0;i≥;;{ ;-[o;8	;"x;@;9"x;i≥o;8	;"y;@;9"y;i≥o;8	;"z;@;9"z;i≥;@;i≥o;;["transform;@;i ;	[ ;;;o;>;"translate;@;,0;i¥;;{ ;-[o;8	;"x;@;9"x;i¥o;8	;"y;@;9"y;i¥o;8	;"z;@;9"z;i¥;@;i¥;,0;@;iØ;-[[o;8;"x;@;9"xo;;[ ;@;"0;i ;@*;iØ[o;8;"y;@;9"yo;;[ ;@;"0;i ;@*;iØ[o;8;"z;@;9"zo;;[ ;@;"0;i ;@*;iØo;
+;;;@;	[ ;["// Background clipping"
+"J// Heads up: FF 3.6 and under need "padding" instead of "padding-box";@;i∂o;;"background-clip;T;@;	[o;;["-webkit-background-clip;@;i ;	[ ;;;o;8	;"	clip;@;9"	clip;iπ;@;iπo;;["-moz-background-clip;@;i ;	[ ;;;o;8	;"	clip;@;9"	clip;i∫;@;i∫o;;["background-clip;@;i ;	[ ;;;o;8	;"	clip;@;9"	clip;iª;@;iª;,0;@;i∏;-[[o;8;"	clip;@;9"	clip0o;
+;;;@;	[ ;["// Background sizing;@;iΩo;;"background-size;T;@;	[	o;;["-webkit-background-size;@;i ;	[ ;;;o;8	;"	size;@;9"	size;iø;@;iøo;;["-moz-background-size;@;i ;	[ ;;;o;8	;"	size;@;9"	size;i¿;@;i¿o;;["-o-background-size;@;i ;	[ ;;;o;8	;"	size;@;9"	size;i¡;@;i¡o;;["background-size;@;i ;	[ ;;;o;8	;"	size;@;9"	size;i¬;@;i¬;,0;@;iæ;-[[o;8;"	size;@;9"	size0o;
+;;;@;	[ ;["// Box sizing;@;iƒo;;"box-sizing;T;@;	[	o;;["-webkit-box-sizing;@;i ;	[ ;;;o;8	;"boxmodel;@;9"boxmodel;i∆;@;i∆o;;["-moz-box-sizing;@;i ;	[ ;;;o;8	;"boxmodel;@;9"boxmodel;i«;@;i«o;;["-ms-box-sizing;@;i ;	[ ;;;o;8	;"boxmodel;@;9"boxmodel;i»;@;i»o;;["box-sizing;@;i ;	[ ;;;o;8	;"boxmodel;@;9"boxmodel;i…;@;i…;,0;@;i≈;-[[o;8;"boxmodel;@;9"boxmodel0o;
+;;;@;	[ ;["// User select"
+"&// For selecting text on the page;@;iÀo;;"user-select;T;@;	[	o;;["-webkit-user-select;@;i ;	[ ;;;o;8	;"select;@;9"select;iŒ;@;iŒo;;["-moz-user-select;@;i ;	[ ;;;o;8	;"select;@;9"select;iœ;@;iœo;;["-o-user-select;@;i ;	[ ;;;o;8	;"select;@;9"select;i–;@;i–o;;["user-select;@;i ;	[ ;;;o;8	;"select;@;9"select;i—;@;i—;,0;@;iÕ;-[[o;8;"select;@;9"select0o;
+;;;@;	[ ;["// Resize anything;@;i”o;;"resizable;T;@;	[	o;;["resize;@;i ;	[ ;;;o;8	;"direction;@;9"direction;i’;@;i’o;
+;;;@;	[ ;["+// Options: horizontal, vertical, both;@;i÷o;;["overflow;@;i ;	[ ;;;o;	;;;@;"	auto;i◊;@;i◊o;
+;;;@;	[ ;["// Safari fix;@;iÿ;,0;@;i‘;-[[o;8;"direction;@;9"directiono;	;;;@;"	both;i‘o;
+;;;@;	[ ;["// CSS3 Content Columns;@;i⁄o;;"content-columns;T;@;	[o;;["-webkit-column-count;@;i ;	[ ;;;o;8	;"columnCount;@;9"columnCount;i‹;@;i‹o;;["-moz-column-count;@;i ;	[ ;;;o;8	;"columnCount;@;9"columnCount;i›;@;i›o;;["column-count;@;i ;	[ ;;;o;8	;"columnCount;@;9"columnCount;iﬁ;@;iﬁo;;["-webkit-column-gap;@;i ;	[ ;;;o;8	;"columnGap;@;9"columnGap;iﬂ;@;iﬂo;;["-moz-column-gap;@;i ;	[ ;;;o;8	;"columnGap;@;9"columnGap;i‡;@;i‡o;;["column-gap;@;i ;	[ ;;;o;8	;"columnGap;@;9"columnGap;i·;@;i·;,0;@;i€;-[[o;8;"columnCount;@;9"columnCount0[o;8;"columnGap;@;9"columnGapo;8	;"gridColumnGutter;@;9"gridColumnGutter;i€o;
+;;;@;	[ ;["// Opacity;@;i„o;;"opacity;T;@;	[o;;["opacity;@;i ;	[ ;;;o:Sass::Script::Operation
+:@operator:div;@:@operand2o;;[ ;@;"100;ii;@*;iÂ:@operand1o;8	;"opacity;@;9"opacity;iÂ;iÂ;@;iÂo;;["filter;@;i ;	[ ;;;o;>;"
+alpha;@;,0;iÊ;;{ ;-[o;?
+;@:single_eq;@;Bo;8	;"opacity;@;9"opacity;iÊ;Co;	;;;@;"opacity;iÊ;iÊ;@;iÊ;,0;@;i‰;-[[o;8;"opacity;@;9"opacityo;;[ ;@;"100;ii;@*;i‰o;
+;;;@;	[ ;["// BACKGROUNDS"
+"T// ----------------------------------------------------------------------------;@;iËo;
+;;;@;	[ ;["-// Cirro's version of the Bootstrap well;@;iÎo;;"
+inset;T;@;	[
+o;;["border-bottom;@;i ;	[ ;;;o;.	;@;/;0;[o;;["px;@;"1px;i;[ ;iÌo;	;;;@;"
+solid;iÌo;1	;2{	;3iˇ;4i;5iˇ;6iˇ;@;0;iÌ;iÌ;@;iÌo;;["border-right;@;i ;	[ ;;;o;.	;@;/;0;[o;;["px;@;"1px;i;[ ;iÓo;	;;;@;"
+solid;iÓo;1	;2{	;3iˇ;4i;5iˇ;6iˇ;@;0;iÓ;iÓ;@;iÓo;;["background;@;i ;	[ ;;;o;>;"darken;@;,0;iÔ;;{ ;-[o;8	;"bg;@;9"bg;iÔo;;[ ;@;"3;i;@*;iÔ;@;iÔo;:;"box-shadow;@;	[ ;,0;@;i;;{ ;-[o;.	;@;/;0;[
+o;	;;;@;"
+inset;io;1	;2{	;3iô;4i;5iô;6iô;@;0;io;;[ ;@;"0;i ;@*;io;;["px;@;"1px;i;[ ;io;;["px;@;"2px;i;[ ;i;io;:;"border-radius;@;	[ ;,0;@;iÒ;;{ ;-[o;;["px;@;"4px;i	;[ ;iÒ;,0;@;iÏ;-[ o;
+;;;@;	[ ;["]// Add an alphatransparency value to any background or border color (via Elyse Holladay);@;iÛo;;"translucent-background;T;@;	[o;;["background-color;@;i ;	[ ;;;o;>;"	hsla;@;,0;iı;;{ ;-[	o;>;"hue;@;,0;iı;;{ ;-[o;8	;"
+color;@;9"
+color;iıo;>;"saturation;@;,0;iı;;{ ;-[o;8	;"
+color;@;9"
+color;iıo;>;"lightness;@;,0;iı;;{ ;-[o;8	;"
+color;@;9"
+color;iıo;8	;"
+alpha;@;9"
+alpha;iı;@;iı;,0;@;iÙ;-[[o;8;"
+color;@;9"
+coloro;8	;"
+white;@;9"
+white;iÙ[o;8;"
+alpha;@;9"
+alphao;;[ ;@;"1;i;@*;iÙo;;"translucent-border;T;@;	[o;;["border-color;@;i ;	[ ;;;o;>;"	hsla;@;,0;i¯;;{ ;-[	o;>;"hue;@;,0;i¯;;{ ;-[o;8	;"
+color;@;9"
+color;i¯o;>;"saturation;@;,0;i¯;;{ ;-[o;8	;"
+color;@;9"
+color;i¯o;>;"lightness;@;,0;i¯;;{ ;-[o;8	;"
+color;@;9"
+color;i¯o;8	;"
+alpha;@;9"
+alpha;i¯;@;i¯o;:;"background-clip;@;	[ ;,0;@;i˘;;{ ;-[o;	;;;@;"padding-box;i˘;,0;@;i˜;-[[o;8;"
+color;@;9"
+coloro;8	;"
+white;@;9"
+white;i˜[o;8;"
+alpha;@;9"
+alphao;;[ ;@;"1;i;@*;i˜o;
+;;;@;	[ ;["2// Gradient Bar Colors for buttons and alerts;@;i˚o;;"gradientBar;T;@;	[o;:;"gradient-vertical;@;	[ ;,0;@;i˝;;{ ;-[o;8	;"primaryColor;@;9"primaryColor;i˝o;8	;"secondaryColor;@;9"secondaryColor;i˝o;;["border-color;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"secondaryColor;@;9"secondaryColor;i˛o;8	;"secondaryColor;@;9"secondaryColor;i˛o;>;"darken;@;,0;i˛;;{ ;-[o;8	;"secondaryColor;@;9"secondaryColor;i˛o;;["%;@;"15%;i;[ ;i˛;i˛;@;i˛o;;["border-color;@;i ;	[ ;;;o;.	;@;/;0;[o;>;"	rgba;@;,0;iˇ;;{ ;-[	o;;[ ;@;"0;i ;@*;iˇo;;[ ;@;"0;i ;@*;iˇo;;[ ;@;"0;i ;@*;iˇo;;[ ;@;"0.1;f0.10000000000000001 ôö;@*;iˇo;>;"	rgba;@;,0;iˇ;;{ ;-[	o;;[ ;@;"0;i ;@*;iˇo;;[ ;@;"0;i ;@*;iˇo;;[ ;@;"0;i ;@*;iˇo;;[ ;@;"0.1;f0.10000000000000001 ôö;@*;iˇo;>;"fade-in;@;,0;iˇ;;{ ;-[o;>;"	rgba;@;,0;iˇ;;{ ;-[	o;;[ ;@;"0;i ;@*;iˇo;;[ ;@;"0;i ;@*;iˇo;;[ ;@;"0;i ;@*;iˇo;;[ ;@;"0.1;f0.10000000000000001 ôö;@*;iˇo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iˇ;iˇ;@;iˇ;,0;@;i¸;-[[o;8;"primaryColor;@;9"primaryColor0[o;8;"secondaryColor;@;9"secondaryColor0o;
+;;;@;	[ ;["// Gradients;@;io;;"gradient-horizontal;T;@;	[o;;["background-color;@;i ;	[ ;;;o;8	;"endColor;@;9"endColor;i;@;io;;["background-image;@;i ;	[ ;;;o;>;"-moz-linear-gradient;@;,0;i;;{ ;-[o;	;;;@;"	left;io;8	;"startColor;@;9"startColor;io;8	;"endColor;@;9"endColor;i;@;io;
+;;;@;	[ ;["// FF 3.6+;@;io;;["background-image;@;i ;	[ ;;;o;>;"-ms-linear-gradient;@;,0;i;;{ ;-[o;	;;;@;"	left;io;8	;"startColor;@;9"startColor;io;8	;"endColor;@;9"endColor;i;@;io;
+;;;@;	[ ;["// IE10;@;io;;["background-image;@;i ;	[ ;;;o;>;"-webkit-gradient;@;,0;i;;{ ;-[
+o;	;;;@;"linear;io;.	;@;/;0;[o;;[ ;@;"0;i ;@*;io;;[ ;@;"0;i ;@*;i;io;.	;@;/;0;[o;;["%;@;"	100%;ii;[ ;io;;[ ;@;"0;i ;@*;i;io;>;"	from;@;,0;i;;{ ;-[o;8	;"startColor;@;9"startColor;io;>;"to;@;,0;i;;{ ;-[o;8	;"endColor;@;9"endColor;i;@;io;
+;;;@;	[ ;["// Safari 4+, Chrome 2+;@;i	o;;["background-image;@;i ;	[ ;;;o;>;"-webkit-linear-gradient;@;,0;i
+;;{ ;-[o;	;;;@;"	left;i
+o;8	;"startColor;@;9"startColor;i
+o;8	;"endColor;@;9"endColor;i
+;@;i
+o;
+;;;@;	[ ;["// Safari 5.1+, Chrome 10+;@;io;;["background-image;@;i ;	[ ;;;o;>;"-o-linear-gradient;@;,0;i;;{ ;-[o;	;;;@;"	left;io;8	;"startColor;@;9"startColor;io;8	;"endColor;@;9"endColor;i;@;io;
+;;;@;	[ ;["// Opera 11.10;@;io;;["background-image;@;i ;	[ ;;;o;>;"linear-gradient;@;,0;i;;{ ;-[o;	;;;@;"	left;io;8	;"startColor;@;9"startColor;io;8	;"endColor;@;9"endColor;i;@;io;
+;;;@;	[ ;["// Le standard;@;io;;["background-repeat;@;i ;	[ ;;;o;	;;;@;"repeat-x;i;@;io;;["filter;@;i ;	[ ;;;o: Sass::Script::Interpolation:@aftero;	;;;@;"', GradientType=1);i;@:@originally_textF:	@mido;8	;"endColor;@;9"endColor;i:@whitespace_afterF:@beforeo;E;Fo;	;;;@;"', endColorstr=';i;@;GF;Ho;8	;"startColor;@;9"startColor;i;IF;Jo;	;;;@;"?progid:DXImageTransform.Microsoft.gradient(startColorstr=';i:@whitespace_beforeF;KF;@;io;
+;;;@;	[ ;["// IE9 and down;@;i;,0;@;i;-[[o;8;"startColor;@;9"startColoro;1	;2{	;3iZ;4i;5iZ;6iZ;@;0;i[o;8;"endColor;@;9"endColoro;1	;2{	;3i8;4i;5i8;6i8;@;0;io;;"gradient-vertical;T;@;	[o;;["background-color;@;i ;	[ ;;;o;>;"mix;@;,0;i;;{ ;-[o;8	;"startColor;@;9"startColor;io;8	;"endColor;@;9"endColor;io;;["%;@;"60%;iA;[ ;i;@;io;;["background-image;@;i ;	[ ;;;o;>;"-moz-linear-gradient;@;,0;i;;{ ;-[o;	;;;@;"top;io;8	;"startColor;@;9"startColor;io;8	;"endColor;@;9"endColor;i;@;io;
+;;;@;	[ ;["// FF 3.6+;@;io;;["background-image;@;i ;	[ ;;;o;>;"-ms-linear-gradient;@;,0;i;;{ ;-[o;	;;;@;"top;io;8	;"startColor;@;9"startColor;io;8	;"endColor;@;9"endColor;i;@;io;
+;;;@;	[ ;["// IE10;@;io;;["background-image;@;i ;	[ ;;;o;>;"-webkit-gradient;@;,0;i;;{ ;-[
+o;	;;;@;"linear;io;.	;@;/;0;[o;;[ ;@;"0;i ;@*;io;;[ ;@;"0;i ;@*;i;io;.	;@;/;0;[o;;[ ;@;"0;i ;@*;io;;["%;@;"	100%;ii;[ ;i;io;>;"	from;@;,0;i;;{ ;-[o;8	;"startColor;@;9"startColor;io;>;"to;@;,0;i;;{ ;-[o;8	;"endColor;@;9"endColor;i;@;io;
+;;;@;	[ ;["// Safari 4+, Chrome 2+;@;io;;["background-image;@;i ;	[ ;;;o;>;"-webkit-linear-gradient;@;,0;i;;{ ;-[o;	;;;@;"top;io;8	;"startColor;@;9"startColor;io;8	;"endColor;@;9"endColor;i;@;io;
+;;;@;	[ ;["// Safari 5.1+, Chrome 10+;@;io;;["background-image;@;i ;	[ ;;;o;>;"-o-linear-gradient;@;,0;i;;{ ;-[o;	;;;@;"top;io;8	;"startColor;@;9"startColor;io;8	;"endColor;@;9"endColor;i;@;io;
+;;;@;	[ ;["// Opera 11.10;@;io;;["background-image;@;i ;	[ ;;;o;>;"linear-gradient;@;,0;i ;;{ ;-[o;	;;;@;"top;i o;8	;"startColor;@;9"startColor;i o;8	;"endColor;@;9"endColor;i ;@;i o;
+;;;@;	[ ;["// The standard;@;i!o;;["background-repeat;@;i ;	[ ;;;o;	;;;@;"repeat-x;i";@;i"o;;["filter;@;i ;	[ ;;;o;E;Fo;	;;;@;"', GradientType=0);i#;@;GF;Ho;8	;"endColor;@;9"endColor;i#;IF;Jo;E;Fo;	;;;@;"', endColorstr=';i#;@;GF;Ho;8	;"startColor;@;9"startColor;i#;IF;Jo;	;;;@;"?progid:DXImageTransform.Microsoft.gradient(startColorstr=';i#;KF;KF;@;i#o;
+;;;@;	[ ;["// IE9 and down;@;i$;,0;@;i;-[[o;8;"startColor;@;9"startColoro;1	;2{	;3iZ;4i;5iZ;6iZ;@;0;i[o;8;"endColor;@;9"endColoro;1	;2{	;3i8;4i;5i8;6i8;@;0;io;;"gradient-directional;T;@;	[o;;["background-color;@;i ;	[ ;;;o;8	;"endColor;@;9"endColor;i';@;i'o;;["background-repeat;@;i ;	[ ;;;o;	;;;@;"repeat-x;i(;@;i(o;;["background-image;@;i ;	[ ;;;o;>;"-moz-linear-gradient;@;,0;i);;{ ;-[o;8	;"deg;@;9"deg;i)o;8	;"startColor;@;9"startColor;i)o;8	;"endColor;@;9"endColor;i);@;i)o;
+;;;@;	[ ;["// FF 3.6+;@;i*o;;["background-image;@;i ;	[ ;;;o;>;"-ms-linear-gradient;@;,0;i+;;{ ;-[o;8	;"deg;@;9"deg;i+o;8	;"startColor;@;9"startColor;i+o;8	;"endColor;@;9"endColor;i+;@;i+o;
+;;;@;	[ ;["// IE10;@;i,o;;["background-image;@;i ;	[ ;;;o;>;"-webkit-linear-gradient;@;,0;i-;;{ ;-[o;8	;"deg;@;9"deg;i-o;8	;"startColor;@;9"startColor;i-o;8	;"endColor;@;9"endColor;i-;@;i-o;
+;;;@;	[ ;["// Safari 5.1+, Chrome 10+;@;i.o;;["background-image;@;i ;	[ ;;;o;>;"-o-linear-gradient;@;,0;i/;;{ ;-[o;8	;"deg;@;9"deg;i/o;8	;"startColor;@;9"startColor;i/o;8	;"endColor;@;9"endColor;i/;@;i/o;
+;;;@;	[ ;["// Opera 11.10;@;i0o;;["background-image;@;i ;	[ ;;;o;>;"linear-gradient;@;,0;i1;;{ ;-[o;8	;"deg;@;9"deg;i1o;8	;"startColor;@;9"startColor;i1o;8	;"endColor;@;9"endColor;i1;@;i1o;
+;;;@;	[ ;["// The standard;@;i2;,0;@;i&;-[[o;8;"startColor;@;9"startColoro;1	;2{	;3iZ;4i;5iZ;6iZ;@;0;i&[o;8;"endColor;@;9"endColoro;1	;2{	;3i8;4i;5i8;6i8;@;0;i&[o;8;"deg;@;9"dego;;["deg;@;"
+45deg;i2;[ ;i&o;;"#gradient-vertical-three-colors;T;@;	[o;;["background-color;@;i ;	[ ;;;o;>;"mix;@;,0;i5;;{ ;-[o;8	;"midColor;@;9"midColor;i5o;8	;"endColor;@;9"endColor;i5o;;["%;@;"80%;iU;[ ;i5;@;i5o;;["background-image;@;i ;	[ ;;;o;>;"-webkit-gradient;@;,0;i6;;{ ;-[o;	;;;@;"linear;i6o;.	;@;/;0;[o;;[ ;@;"0;i ;@*;i6o;;[ ;@;"0;i ;@*;i6;i6o;.	;@;/;0;[o;;[ ;@;"0;i ;@*;i6o;;["%;@;"	100%;ii;[ ;i6;i6o;>;"	from;@;,0;i6;;{ ;-[o;8	;"startColor;@;9"startColor;i6o;>;"color-stop;@;,0;i6;;{ ;-[o;8	;"colorStop;@;9"colorStop;i6o;8	;"midColor;@;9"midColor;i6o;>;"to;@;,0;i6;;{ ;-[o;8	;"endColor;@;9"endColor;i6;@;i6o;;["background-image;@;i ;	[ ;;;o;>;"-webkit-linear-gradient;@;,0;i7;;{ ;-[o;8	;"startColor;@;9"startColor;i7o;.	;@;/;0;[o;8	;"midColor;@;9"midColor;i7o;8	;"colorStop;@;9"colorStop;i7;i7o;8	;"endColor;@;9"endColor;i7;@;i7o;;["background-image;@;i ;	[ ;;;o;>;"-moz-linear-gradient;@;,0;i8;;{ ;-[	o;	;;;@;"top;i8o;8	;"startColor;@;9"startColor;i8o;.	;@;/;0;[o;8	;"midColor;@;9"midColor;i8o;8	;"colorStop;@;9"colorStop;i8;i8o;8	;"endColor;@;9"endColor;i8;@;i8o;;["background-image;@;i ;	[ ;;;o;>;"-ms-linear-gradient;@;,0;i9;;{ ;-[o;8	;"startColor;@;9"startColor;i9o;.	;@;/;0;[o;8	;"midColor;@;9"midColor;i9o;8	;"colorStop;@;9"colorStop;i9;i9o;8	;"endColor;@;9"endColor;i9;@;i9o;;["background-image;@;i ;	[ ;;;o;>;"-o-linear-gradient;@;,0;i:;;{ ;-[o;8	;"startColor;@;9"startColor;i:o;.	;@;/;0;[o;8	;"midColor;@;9"midColor;i:o;8	;"colorStop;@;9"colorStop;i:;i:o;8	;"endColor;@;9"endColor;i:;@;i:o;;["background-image;@;i ;	[ ;;;o;>;"linear-gradient;@;,0;i;;;{ ;-[o;8	;"startColor;@;9"startColor;i;o;.	;@;/;0;[o;8	;"midColor;@;9"midColor;i;o;8	;"colorStop;@;9"colorStop;i;;i;o;8	;"endColor;@;9"endColor;i;;@;i;o;;["background-repeat;@;i ;	[ ;;;o;	;;;@;"no-repeat;i<;@;i<o;;["filter;@;i ;	[ ;;;o;E;Fo;	;;;@;"', GradientType=0);i=;@;GF;Ho;8	;"endColor;@;9"endColor;i=;IF;Jo;E;Fo;	;;;@;"', endColorstr=';i=;@;GF;Ho;8	;"startColor;@;9"startColor;i=;IF;Jo;	;;;@;"?progid:DXImageTransform.Microsoft.gradient(startColorstr=';i=;KF;KF;@;i=o;
+;;;@;	[ ;["C// IE9 and down, gets no color-stop at all for proper fallback;@;i>;,0;@;i4;-[	[o;8;"startColor;@;9"startColoro;1	;2{	;3i ;4i;5i≥;6iÓ;@;0;i4[o;8;"midColor;@;9"midColoro;1	;2{	;3i;4i;5iH;6i∂;@;0;i4[o;8;"colorStop;@;9"colorStopo;;["%;@;"50%;i7;[ ;i4[o;8;"endColor;@;9"endColoro;1	;2{	;3i√;4i;5i7;6id;@;0;i4o;;"gradient-radial;T;@;	[o;;["background-color;@;i ;	[ ;;;o;8	;"outerColor;@;9"outerColor;iA;@;iAo;;["background-image;@;i ;	[ ;;;o;>;"-webkit-gradient;@;,0;iB;;{ ;-[o;	;;;@;"radial;iBo;.	;@;/;0;[o;	;;;@;"center;iBo;	;;;@;"center;iB;iBo;;[ ;@;"0;i ;@*;iBo;.	;@;/;0;[o;	;;;@;"center;iBo;	;;;@;"center;iB;iBo;;[ ;@;"460;iÃ;@*;iBo;>;"	from;@;,0;iB;;{ ;-[o;8	;"innerColor;@;9"innerColor;iBo;>;"to;@;,0;iB;;{ ;-[o;8	;"outerColor;@;9"outerColor;iB;@;iBo;;["background-image;@;i ;	[ ;;;o;>;"-webkit-radial-gradient;@;,0;iC;;{ ;-[o;	;;;@;"circle;iCo;8	;"innerColor;@;9"innerColor;iCo;8	;"outerColor;@;9"outerColor;iC;@;iCo;;["background-image;@;i ;	[ ;;;o;>;"-moz-radial-gradient;@;,0;iD;;{ ;-[o;	;;;@;"circle;iDo;8	;"innerColor;@;9"innerColor;iDo;8	;"outerColor;@;9"outerColor;iD;@;iDo;;["background-image;@;i ;	[ ;;;o;>;"-ms-radial-gradient;@;,0;iE;;{ ;-[o;	;;;@;"circle;iEo;8	;"innerColor;@;9"innerColor;iEo;8	;"outerColor;@;9"outerColor;iE;@;iEo;;["background-repeat;@;i ;	[ ;;;o;	;;;@;"no-repeat;iF;@;iFo;
+;;;@;	[ ;[",// Opera cannot do radial gradients yet;@;iG;,0;@;i@;-[[o;8;"innerColor;@;9"innerColoro;1	;2{	;3iZ;4i;5iZ;6iZ;@;0;i@[o;8;"outerColor;@;9"outerColoro;1	;2{	;3i8;4i;5i8;6i8;@;0;i@o;;"gradient-striped;T;@;	[o;;["background-color;@;i ;	[ ;;;o;8	;"
+color;@;9"
+color;iJ;@;iJo;;["background-image;@;i ;	[ ;;;o;>;"-webkit-gradient;@;,0;iK;;{ ;-[o;	;;;@;"linear;iKo;.	;@;/;0;[o;;[ ;@;"0;i ;@*;iKo;;["%;@;"	100%;ii;[ ;iK;iKo;.	;@;/;0;[o;;["%;@;"	100%;ii;[ ;iKo;;[ ;@;"0;i ;@*;iK;iKo;>;"color-stop;@;,0;iK;;{ ;-[o;;[ ;@;"	0.25;f	0.25;@*;iKo;>;"	rgba;@;,0;iK;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iKo;;[ ;@;"255;iˇ;@*;iKo;;[ ;@;"255;iˇ;@*;iKo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iKo;>;"color-stop;@;,0;iK;;{ ;-[o;;[ ;@;"	0.25;f	0.25;@*;iKo;	;;;@;"transparent;iKo;>;"color-stop;@;,0;iK;;{ ;-[o;;[ ;@;"0.5;f0.5;@*;iKo;	;;;@;"transparent;iKo;>;"color-stop;@;,0;iK;;{ ;-[o;;[ ;@;"0.5;f0.5;@*;iKo;>;"	rgba;@;,0;iK;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iKo;;[ ;@;"255;iˇ;@*;iKo;;[ ;@;"255;iˇ;@*;iKo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iKo;>;"color-stop;@;,0;iK;;{ ;-[o;;[ ;@;"	0.75;f	0.75;@*;iKo;>;"	rgba;@;,0;iK;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iKo;;[ ;@;"255;iˇ;@*;iKo;;[ ;@;"255;iˇ;@*;iKo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iKo;>;"color-stop;@;,0;iK;;{ ;-[o;;[ ;@;"	0.75;f	0.75;@*;iKo;	;;;@;"transparent;iKo;>;"to;@;,0;iK;;{ ;-[o;	;;;@;"transparent;iK;@;iKo;;["background-image;@;i ;	[ ;;;o;>;"-webkit-linear-gradient;@;,0;iL;;{ ;-[o;8	;"
+angle;@;9"
+angle;iLo;.	;@;/;0;[o;>;"	rgba;@;,0;iL;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iLo;;[ ;@;"255;iˇ;@*;iLo;;[ ;@;"255;iˇ;@*;iLo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iLo;;["%;@;"25%;i;[ ;iL;iLo;.	;@;/;0;[o;	;;;@;"transparent;iLo;;["%;@;"25%;i;[ ;iL;iLo;.	;@;/;0;[o;	;;;@;"transparent;iLo;;["%;@;"50%;i7;[ ;iL;iLo;.	;@;/;0;[o;>;"	rgba;@;,0;iL;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iLo;;[ ;@;"255;iˇ;@*;iLo;;[ ;@;"255;iˇ;@*;iLo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iLo;;["%;@;"50%;i7;[ ;iL;iLo;.	;@;/;0;[o;>;"	rgba;@;,0;iL;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iLo;;[ ;@;"255;iˇ;@*;iLo;;[ ;@;"255;iˇ;@*;iLo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iLo;;["%;@;"75%;iP;[ ;iL;iLo;.	;@;/;0;[o;	;;;@;"transparent;iLo;;["%;@;"75%;iP;[ ;iL;iLo;	;;;@;"transparent;iL;@;iLo;;["background-image;@;i ;	[ ;;;o;>;"-moz-linear-gradient;@;,0;iM;;{ ;-[o;8	;"
+angle;@;9"
+angle;iMo;.	;@;/;0;[o;>;"	rgba;@;,0;iM;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iMo;;[ ;@;"255;iˇ;@*;iMo;;[ ;@;"255;iˇ;@*;iMo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iMo;;["%;@;"25%;i;[ ;iM;iMo;.	;@;/;0;[o;	;;;@;"transparent;iMo;;["%;@;"25%;i;[ ;iM;iMo;.	;@;/;0;[o;	;;;@;"transparent;iMo;;["%;@;"50%;i7;[ ;iM;iMo;.	;@;/;0;[o;>;"	rgba;@;,0;iM;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iMo;;[ ;@;"255;iˇ;@*;iMo;;[ ;@;"255;iˇ;@*;iMo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iMo;;["%;@;"50%;i7;[ ;iM;iMo;.	;@;/;0;[o;>;"	rgba;@;,0;iM;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iMo;;[ ;@;"255;iˇ;@*;iMo;;[ ;@;"255;iˇ;@*;iMo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iMo;;["%;@;"75%;iP;[ ;iM;iMo;.	;@;/;0;[o;	;;;@;"transparent;iMo;;["%;@;"75%;iP;[ ;iM;iMo;	;;;@;"transparent;iM;@;iMo;;["background-image;@;i ;	[ ;;;o;>;"-ms-linear-gradient;@;,0;iN;;{ ;-[o;8	;"
+angle;@;9"
+angle;iNo;.	;@;/;0;[o;>;"	rgba;@;,0;iN;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iNo;;[ ;@;"255;iˇ;@*;iNo;;[ ;@;"255;iˇ;@*;iNo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iNo;;["%;@;"25%;i;[ ;iN;iNo;.	;@;/;0;[o;	;;;@;"transparent;iNo;;["%;@;"25%;i;[ ;iN;iNo;.	;@;/;0;[o;	;;;@;"transparent;iNo;;["%;@;"50%;i7;[ ;iN;iNo;.	;@;/;0;[o;>;"	rgba;@;,0;iN;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iNo;;[ ;@;"255;iˇ;@*;iNo;;[ ;@;"255;iˇ;@*;iNo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iNo;;["%;@;"50%;i7;[ ;iN;iNo;.	;@;/;0;[o;>;"	rgba;@;,0;iN;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iNo;;[ ;@;"255;iˇ;@*;iNo;;[ ;@;"255;iˇ;@*;iNo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iNo;;["%;@;"75%;iP;[ ;iN;iNo;.	;@;/;0;[o;	;;;@;"transparent;iNo;;["%;@;"75%;iP;[ ;iN;iNo;	;;;@;"transparent;iN;@;iNo;;["background-image;@;i ;	[ ;;;o;>;"-o-linear-gradient;@;,0;iO;;{ ;-[o;8	;"
+angle;@;9"
+angle;iOo;.	;@;/;0;[o;>;"	rgba;@;,0;iO;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iOo;;[ ;@;"255;iˇ;@*;iOo;;[ ;@;"255;iˇ;@*;iOo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iOo;;["%;@;"25%;i;[ ;iO;iOo;.	;@;/;0;[o;	;;;@;"transparent;iOo;;["%;@;"25%;i;[ ;iO;iOo;.	;@;/;0;[o;	;;;@;"transparent;iOo;;["%;@;"50%;i7;[ ;iO;iOo;.	;@;/;0;[o;>;"	rgba;@;,0;iO;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iOo;;[ ;@;"255;iˇ;@*;iOo;;[ ;@;"255;iˇ;@*;iOo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iOo;;["%;@;"50%;i7;[ ;iO;iOo;.	;@;/;0;[o;>;"	rgba;@;,0;iO;;{ ;-[	o;;[ ;@;"255;iˇ;@*;iOo;;[ ;@;"255;iˇ;@*;iOo;;[ ;@;"255;iˇ;@*;iOo;;[ ;@;"	0.15;f0.14999999999999999 33;@*;iOo;;["%;@;"75%;iP;[ ;iO;iOo;.	;@;/;0;[o;	;;;@;"transparent;iOo;;["%;@;"75%;iP;[ ;iO;iOo;	;;;@;"transparent;iO;@;iOo;
+;;;@;	[ ;["»//background-image: linear-gradient($angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);@;iP;,0;@;iI;-[[o;8;"
+color;@;9"
+color0[o;8;"
+angle;@;9"
+angleo;;["deg;@;"-45deg;iŒ;[ ;iIo;
+;;;@;	[ ;["// Reset filters for IE;@;iRo;;"reset-filter;T;@;	[o;;["filter;@;i ;	[ ;;;o;	;;;@;"@progid:DXImageTransform.Microsoft.gradient(enabled = false);iT;@;iT;,0;@;iS;-[ o;
+;;;@;	[ ;["// COMPONENT MIXINS"
+"T// ----------------------------------------------------------------------------;@;iVo;
+;;;@;	[ ;[
+"// Horizontal dividers"
+"!// -------------------------"
+"A// Dividers (basically an hr) within dropdowns and nav lists;@;iYo;;"nav-divider;T;@;	[o;;["height;@;i ;	[ ;;;o;;["px;@;"1px;i;[ ;i];@;i]o;;["margin;@;i ;	[ ;;;o;.	;@;/;0;[o;?
+;@:
+minus;@;Bo;;[ ;@;"1;i;@*;i^;Co;?
+;@;A;@;Bo;;[ ;@;"2;i;@*;i^;Co;8	;"baseLineHeight;@;9"baseLineHeight;i^;i^;i^o;;["px;@;"1px;i;[ ;i^;i^;@;i^o;
+;;;@;	[ ;["// 8px 1px;@;i_o;;["overflow;@;i ;	[ ;;;o;	;;;@;"hidden;i`;@;i`o;;["background-color;@;i ;	[ ;;;o;1	;2{	;3iÂ;4i;5iÂ;6iÂ;@;0;ia;@;iao;;["border-bottom;@;i ;	[ ;;;o;.	;@;/;0;[o;;["px;@;"1px;i;[ ;ibo;	;;;@;"
+solid;ibo;8	;"
+white;@;9"
+white;ib;ib;@;ibo;
+;;;@;	[ ;["F// IE7 needs a set width since we gave a height. Restricting just"
+"B// to IE7 to keep the 1px left/right space in other browsers."
+"F// It is unclear where IE is getting the extra space that we need"
+"0// to negative-margin away, but so it goes.;@;ico;;["*width;@;i ;	[ ;;;o;;["%;@;"	100%;ii;[ ;ig;@;igo;;["*margin;@;i ;	[ ;;;o;.	;@;/;0;[o;;["px;@;"	-5px;iˆ;[ ;iho;;[ ;@;"0;i ;@*;iho;;["px;@;"5px;i
+;[ ;ih;ih;@;ih;,0;@;i\;-[ o;
+;;;@;	[ ;["// Button backgrounds"
+"T// ----------------------------------------------------------------------------;@;ijo;;"buttonBackground;T;@;	[o;
+;;;@;	[ ;["Z// gradientBar will set the background to a pleasing blend of these, to support IE<=9;@;imo;:;"gradientBar;@;	[ ;,0;@;in;;{ ;-[o;8	;"startColor;@;9"startColor;ino;8	;"endColor;@;9"endColor;ino;:;"reset-filter;@;	[ ;,0;@;io;;{ ;-[ o;
+;;;@;	[ ;["N// in these cases the gradient won't cover the background, so we override;@;ipo;;T;@;i ;	[o;;["background-color;@;i ;	[ ;;;o;8	;"endColor;@;9"endColor;ir;@;ir;["9&:hover, &:active, &.active, &.disabled, &[disabled];@;o; ;![
+o;";![o;#
+;![o;$;@;iqo;%
+;["
+hover;;&;@;iq;'0;(o;);*{ ;+0;@;iqo;";![o;#
+;![o;$;@;iqo;%
+;["active;;&;@;iq;'0;(o;);*{ ;+0;@;iqo;";![o;#
+;![o;$;@;iqo:Sass::Selector::Class;["active;@;iq;(o;);*{ ;+0;@;iqo;";![o;#
+;![o;$;@;iqo;M;["disabled;@;iq;(o;);*{ ;+0;@;iqo;";![o;#
+;![o;$;@;iqo:Sass::Selector::Attribute;@0;["disabled;0;@:@flags0;iq:@namespace0;(o;);*{ ;+0;@;iq;@;iq;iqo;
+;;;@;	[ ;["U// IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves;@;iso;;T;@;i ;	[o;;["background-color;@;i ;	[ ;;;o;E;F0;@;GF;Ho;	;;;@;"\9;iv;I0;Jo;>;"darken;@;,0;iv;;{ ;-[o;8	;"endColor;@;9"endColor;ivo;;["%;@;"10%;i;[ ;iv;iv;Ki;@;iv;["&:active,
+&.active;@;o; ;![o;";![o;#
+;![o;$;" ;io;%
+;["active;;&;@|;i;'0;(o;);*{ ;+0;@|;io;";!["
+o;#
+;![o;$;@|;io;M;["active;@|;i;(o;);*{ ;+0;@|;i;@|;i;it;,0;@;il;-[[o;8;"startColor;@;9"startColor0[o;8;"endColor;@;9"endColor0o;
+;;;@;	[ ;["// Navbar vertical align"
+"T// ----------------------------------------------------------------------------"
+"1// Vertically center elements in the navbar."
+"Ä// Example: an element has a height of 30px, so write out `.navbarVerticalAlign(30px);` to calculate the appropriate top margin.;@;ixo;;"navbarVerticalAlign;T;@;	[o;;["margin-top;@;i ;	[ ;;;o;?
+;@;A;@;Bo;;[ ;@;"2;i;@*;i};Co;?
+;@;L;@;Bo;8	;"elementHeight;@;9"elementHeight;i};Co;8	;"navbarHeight;@;9"navbarHeight;i};i};i};@;i};,0;@;i|;-[[o;8;"elementHeight;@;9"elementHeight0o;
+;;;@;	[ ;[
+"// POPOVER ARROWS"
+"T// ----------------------------------------------------------------------------"
+" // For tipsies and popovers;@;io;;"popoverArrow-top;T;@;	[o;;["bottom;@;i ;	[ ;;;o;;[ ;@;"0;i ;@*;iÉ;@;iÉo;;["	left;@;i ;	[ ;;;o;;["%;@;"50%;i7;[ ;iÑ;@;iÑo;;["margin-left;@;i ;	[ ;;;o:!Sass::Script::UnaryOperation	;@;L;@:@operando;8	;"arrowWidth;@;9"arrowWidth;iÖ;iÖ;@;iÖo;;["border-left;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;iÜo;	;;;@;"
+solid;iÜo;	;;;@;"transparent;iÜ;iÜ;@;iÜo;;["border-right;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;iáo;	;;;@;"
+solid;iáo;	;;;@;"transparent;iá;iá;@;iáo;;["border-top;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;iào;	;;;@;"
+solid;iào;8	;"
+color;@;9"
+color;ià;ià;@;ià;,0;@;iÇ;-[[o;8;"arrowWidth;@;9"arrowWidtho;;["px;@;"5px;i
+;[ ;iÇ[o;8;"
+color;@;9"
+coloro;8	;"
+black;@;9"
+black;iÇo;;"popoverArrow-left;T;@;	[o;;["top;@;i ;	[ ;;;o;;["%;@;"50%;i7;[ ;iã;@;ião;;["
+right;@;i ;	[ ;;;o;;[ ;@;"0;i ;@*;iå;@;iåo;;["margin-top;@;i ;	[ ;;;o;Q	;@;L;@;Ro;8	;"arrowWidth;@;9"arrowWidth;iç;iç;@;iço;;["border-top;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;iéo;	;;;@;"
+solid;iéo;	;;;@;"transparent;ié;ié;@;iéo;;["border-bottom;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;ièo;	;;;@;"
+solid;ièo;	;;;@;"transparent;iè;iè;@;ièo;;["border-left;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;iêo;	;;;@;"
+solid;iêo;8	;"
+color;@;9"
+color;iê;iê;@;iê;,0;@;iä;-[[o;8;"arrowWidth;@;9"arrowWidtho;;["px;@;"5px;i
+;[ ;iä[o;8;"
+color;@;9"
+coloro;8	;"
+black;@;9"
+black;iäo;;"popoverArrow-bottom;T;@;	[o;;["top;@;i ;	[ ;;;o;;[ ;@;"0;i ;@*;iì;@;iìo;;["	left;@;i ;	[ ;;;o;;["%;@;"50%;i7;[ ;iî;@;iîo;;["margin-left;@;i ;	[ ;;;o;Q	;@;L;@;Ro;8	;"arrowWidth;@;9"arrowWidth;iï;iï;@;iïo;;["border-left;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;iño;	;;;@;"
+solid;iño;	;;;@;"transparent;iñ;iñ;@;iño;;["border-right;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;ióo;	;;;@;"
+solid;ióo;	;;;@;"transparent;ió;ió;@;ióo;;["border-bottom;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;iòo;	;;;@;"
+solid;iòo;8	;"
+color;@;9"
+color;iò;iò;@;iò;,0;@;ií;-[[o;8;"arrowWidth;@;9"arrowWidtho;;["px;@;"5px;i
+;[ ;ií[o;8;"
+color;@;9"
+coloro;8	;"
+black;@;9"
+black;iío;;"popoverArrow-right;T;@;	[o;;["top;@;i ;	[ ;;;o;;["%;@;"50%;i7;[ ;iõ;@;iõo;;["	left;@;i ;	[ ;;;o;;[ ;@;"0;i ;@*;iú;@;iúo;;["margin-top;@;i ;	[ ;;;o;Q	;@;L;@;Ro;8	;"arrowWidth;@;9"arrowWidth;iù;iù;@;iùo;;["border-top;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;iûo;	;;;@;"
+solid;iûo;	;;;@;"transparent;iû;iû;@;iûo;;["border-bottom;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;iüo;	;;;@;"
+solid;iüo;	;;;@;"transparent;iü;iü;@;iüo;;["border-right;@;i ;	[ ;;;o;.	;@;/;0;[o;8	;"arrowWidth;@;9"arrowWidth;i†o;	;;;@;"
+solid;i†o;8	;"
+color;@;9"
+color;i†;i†;@;i†;,0;@;iö;-[[o;8;"arrowWidth;@;9"arrowWidtho;;["px;@;"5px;i
+;[ ;iö[o;8;"
+color;@;9"
+coloro;8	;"
+black;@;9"
+black;iö
