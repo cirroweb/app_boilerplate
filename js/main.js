@@ -33,11 +33,13 @@
 			// Click handlers
 			self.$toggleNav.on('click', function(){
 				self.modernizrTransition();
+				self.initialScrollHeight();
 			});
 			self.$alert.on('click', function(){
 				self.alertClose();
 			});
-
+			self.navScrollClosed();
+			self.fancyInit();
 		},
 
 		// Utilizing Modernizer to check if CSS transition is supported by the browser
@@ -46,7 +48,7 @@
 			var self = this;
 
 			if ( Modernizr.csstransitions ) {
-					console.log('yes');
+					
 					self.navBarToggleCss();
 			}
 			else {
@@ -67,6 +69,25 @@
 					self.$mainNav.removeClass('nav-shown');
 				}			
 
+		},
+
+		// Function that grabs the scroll top when menu is initially shown
+		initialScrollHeight: function() {
+			var self = this;
+			self.initScroll = self.theTop;
+		},
+
+		// Close the nav if user scrolls a certain amount
+		navScrollClosed: function() {
+			var self = this;
+
+			self.theTop = $window.scrollTop();
+
+			if( self.$pageWrap.hasClass('nav-shown') === true ) {
+				if((self.theTop - self.initScroll)> 1000 || (self.theTop - self.initScroll) < -1000 ){
+					self.$toggleNav.trigger('click');
+				}
+			}
 		},
 
 		// Toggle the Nav bar using JS/Jquery animate
@@ -97,6 +118,33 @@
 				self.toggle = 0;
 			}
 
+
+		},
+
+		//init Fancybox for every div with correct hash and href
+		fancyInit: function() {
+			var self = this;
+
+			$(".fancybox").fancybox({
+			  helpers : {
+	        overlay : {
+            css : {
+                'background' : 'rgba(0, 0, 0, 0.75)'
+            }
+	        }
+    		},
+    		padding: 0,
+    		minWidth: 350,
+    		beforeShow: function(){
+			    $window.on('resize.fancybox', function(){
+		        $.fancybox.update();
+		      });
+			  },
+			  afterClose: function(){
+			    $window.off('resize.fancybox');
+			  }
+
+			});
 
 		},
 
@@ -160,7 +208,7 @@
 
 	// Window scroll
 	$window.scroll(function(){
-
+		polco.navScrollClosed();
 	});		
 
 	// Window resize
