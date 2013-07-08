@@ -17,11 +17,10 @@
 			self.$html                 = $("html, body");
 			self.docuHeight						 = $(document).height();
 			self.windHeight						 = $(window).height();
-			self.$toggleNav						 = $('#toggle-nav');
-			self.$pageWrap						 = $('#page-wrap');
+			self.$toggleNav						 = $('.nav-toggle');
+			self.$mainNav							 = $('.main-nav');
+			self.$pageWrap						 = $('.page-wrap');
 			self.$alert 							 = $('.alert-close-trigger');
-
-
 
 			// Call touchstart for touchscreen functionality for mobile menu on devices
 			// if ( navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/Android/i) ){
@@ -47,6 +46,7 @@
 			var self = this;
 
 			if ( Modernizr.csstransitions ) {
+					console.log('yes');
 					self.navBarToggleCss();
 			}
 			else {
@@ -60,9 +60,11 @@
 		
 				if ( self.$pageWrap.hasClass('nav-shown') !== true ) {
 					self.$pageWrap.addClass('nav-shown');	
+					self.$mainNav.addClass('nav-shown');	
 				}
 				else {
 					self.$pageWrap.removeClass('nav-shown');
+					self.$mainNav.removeClass('nav-shown');
 				}			
 
 		},
@@ -76,7 +78,10 @@
 				//open nav
 				self.$pageWrap.stop().animate({
 					left: '-200'
-				}, 200, 'linear');
+				}, 250, 'linear');
+				self.$mainNav.stop().animate({
+					left: '-200'
+				}, 250, 'linear');
 				self.toggle = 1;
 			} 
 
@@ -85,7 +90,10 @@
 				//close nav
 				self.$pageWrap.stop().animate({
 					left: '0'
-				}, 200, 'linear');
+				}, 250, 'linear');
+				self.$mainNav.stop().animate({
+					left: '-200'
+				}, 250, 'linear');
 				self.toggle = 0;
 			}
 
