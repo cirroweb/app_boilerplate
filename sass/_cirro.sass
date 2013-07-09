@@ -77,3 +77,75 @@
 	padding: 10px
 	background: rgba(255,250,250,.95)
 	display: none
+
+// flexslider styling
+.flexslider
+	height: 1000px
+	width: 100%
+	height: 100%
+	.flex-viewport
+		height: 100%
+		.slides
+			height: 100%
+			.slide
+				width: 100%
+				height: 100%
+			.first-slide
+				background-image: url(../img/background-1.jpg)
+				background-size: cover
+			.second-slide
+				background-image: url(../img/background-2.jpg)
+			.third-slide
+				background-image: url(../img/background-3.jpg)
+				background-size: cover
+
+
+.slide-content
+	position: relative
+	color: white
+	width: 500px
+	margin: 0 auto
+	text-align: center
+	top: 50%
+	margin-top: -30px
+	z-index: 100
+	.slide-title
+		font-size: 1.5em
+	.slide-btn
+		height: 35px
+		border-radius: 15px
+		background: white
+		border: 2px solid black
+		color: black
+		width: 100px
+		padding: 5px
+		text-align: center
+		cursor: pointer
+		margin: 0 auto
+		&:hover
+			background: gray
+
+
+
+
+
+.flex-page-container
+	position: absolute
+	left: 0
+	right: 0
+	top: 0
+	bottom: 0
+	.intro-slider
+		position: absolute
+		left: 0
+		right: 0
+		top: 0
+		bottom: 0
+
+
+
+body .flex-page-container
+	width: 100%
+	max-width: 100%
+	overflow: hidden
+

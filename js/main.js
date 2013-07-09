@@ -21,6 +21,9 @@
 			self.$mainNav							 = $('.main-nav');
 			self.$pageWrap						 = $('.page-wrap');
 			self.$alert 							 = $('.alert-close-trigger');
+			self.$introSlider					 = $('#intro-slider');
+			self.$slide 							 = $('.slide');
+
 
 			// Call touchstart for touchscreen functionality for mobile menu on devices
 			// if ( navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/Android/i) ){
@@ -40,6 +43,8 @@
 			});
 			self.navScrollClosed();
 			self.fancyInit();
+			self.flexContent();
+			self.flexsliderInit();
 		},
 
 		// Utilizing Modernizer to check if CSS transition is supported by the browser
@@ -163,6 +168,33 @@
 			self.$alert.toggle();
 
 		},
+
+		flexsliderInit: function() {
+			var self = this;
+
+			self.$introSlider.flexslider({
+				animation: "slide",
+				controlNav: true,
+				animationLoop: false,
+				slideshow: false,
+				directionNav: true,
+				after: function(){
+					self.flexContent();
+				}
+			});
+
+		},
+		flexContent: function() {
+			var self = this;
+			if(self.$slide.hasClass('flex-active-slide')){
+				$('slide-content').fadeIn('slow');
+			}
+			else {
+				$('slide-content').fadeOut('fast');
+			}
+
+		},
+
 
 		// Find the width of the window
 		windowWidthFunction: function() {
