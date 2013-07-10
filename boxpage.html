@@ -19,17 +19,7 @@
 				<!--[if lt IE 7]>
 						<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 				<![endif]-->
-			<div class="sort-by">
-				<h4> Sort By </h4>
-				<ul id="sort-buttons">
-					<li> 
-						<a href="#" data-filter=".newest" class="bill-filter">Newest </a> 
-					</li>
-					<li> 
-						<a href="#" data-filter=".my-bills" class="bill-filter">My Bills</a>
-					</li>
-				</ul>
-			</div>
+
 			<div class="isotope-container">
 				<div id="bills-container" class="isotope">
 					<div class="page-title"> 
@@ -103,32 +93,103 @@
 				</div>	
 				<div id="all-modals-container">
 					<div id="bill1" class="modal-window hide">
+						<a class="fancybox-item fancybox-close"></a>
 						<div class="modal-text">
-							<h2> TITLE </h2>
-							<p> This is where the description of the bill goes, la de da </p>
-							<p class="sponsor"> 
-									<b> Sponsor: </b> <a href="#sponsor-link"> Rep. Dave Camp [R-M14] </a> 
-							</p>
-							<p class="introduced"> 
-									<b> Introduced: </b> 2013-01-21
-							</p>
-							<p class="current-status"> 
-									<b> Current Status: </b> 2013-01-21
-							</p>
+							<h2> H.R. 325 </h2>
+							<p> To ensure the complete and timely payment of the obligations ... (On Passage of the Bill) </p>
 							<div class="full-bill-links">
-								<h4> View Full Bill </h4>
+								<h5><b> View Full Bill</b> </h5>
 								<btn class="btn bill-btn"> Html </btn>
 								<btn class="btn bill-btn"> PDF </btn>
 								<btn class="btn bill-btn"> THOMAS </btn>
 							</div>
+	<!-- 						<div class="share-bill-links">
+								<div class="bill-title"> Share Bill </div>
+								<div class="social-icons">
+									<a class="social" href="https://www.twitter.com/fuelcafedenver">	&#62218;</a>
+									<a class="social" href="https://www.facebook.com/fuelcafedenver">	&#62221; </a>
+								</div>
+							</div> -->
+							<p class="sponsor"> 
+									<b class="title"> SPONSOR: </b> <a href="#sponsor-link"> Rep. Dave Camp [R-M14] </a> 
+							</p>
+							<p class="introduced"> 
+									<b class="title"> INTRODUCED: </b> 2013-01-21
+							</p>
+							<p class="current-status"> 
+									<b class="title"> CURRENT STATUS: </b> 2013-01-21
+							</p>			
 						</div>
 						<div class="modal-buttons">
-							<btn class="btn agree"> Agree </btn>
-							<btn class="btn abstain"> Abstain </btn>
-							<btn class="btn disagree"> Disagree </btn>
+							<h5><b> Cast Your Vote </b> </h5>
+							<button class="btn vote-btn agree"> Agree </button>
+							<button class="btn vote-btn abstain"> Abstain </button>
+							<button class="btn vote-btn disagree"> Disagree </button>
 						</div>
+						<form>
+						  <fieldset>
+						    <h5><b>Leave Your Comment</b></h5>
+						    <textarea rows="10" cols="20" placeholder="Type something…"></textarea>
+						    <button type="submit" class="btn submit">Submit</button>
+						  </fieldset>
+						</form>
+					</div>
+
+					<div id="bill2" class="modal-window hide">
+						<a class="fancybox-item fancybox-close"></a>
+						<div class="modal-text">
+							<h2> H.R. 325 </h2>
+							<p> To ensure the complete and timely payment of the obligations ... (On Passage of the Bill) </p>
+							<div class="full-bill-links">
+								<h5><b> View Full Bill</b> </h5>
+								<btn class="btn bill-btn"> Html </btn>
+								<btn class="btn bill-btn"> PDF </btn>
+								<btn class="btn bill-btn"> THOMAS </btn>
+							</div>
+	<!-- 						<div class="share-bill-links">
+								<div class="bill-title"> Share Bill </div>
+								<div class="social-icons">
+									<a class="social" href="https://www.twitter.com/fuelcafedenver">	&#62218;</a>
+									<a class="social" href="https://www.facebook.com/fuelcafedenver">	&#62221; </a>
+								</div>
+							</div> -->
+							<p class="sponsor"> 
+									<b class="title"> SPONSOR: </b> <a href="#sponsor-link"> Rep. Dave Camp [R-M14] </a> 
+							</p>
+							<p class="introduced"> 
+									<b class="title"> INTRODUCED: </b> 2013-01-21
+							</p>
+							<p class="current-status"> 
+									<b class="title"> CURRENT STATUS: </b> 2013-01-21
+							</p>			
+						</div>
+						<div class="modal-buttons">
+							<h5><b> Cast Your Vote </b> </h5>
+							<button class="btn vote-btn agree"> Agree </button>
+							<button class="btn vote-btn abstain"> Abstain </button>
+							<button class="btn vote-btn disagree"> Disagree </button>
+						</div>
+						<form>
+						  <fieldset>
+						    <h5><b>Leave Your Comment</b></h5>
+						    <textarea rows="10" cols="20" placeholder="Type something…"></textarea>
+						    <button type="submit" class="btn submit">Submit</button>
+						  </fieldset>
+						</form>
 					</div>
 				</div>		
+			</div>
+
+			<div class="sort-by">
+				<h4> Sort By </h4>
+				<ul id="sort-buttons">
+					<li> 
+						<a href="#" data-filter=".newest" class="bill-filter">Newest </a> 
+					</li>
+					<li> 
+						<a href="#" data-filter=".my-bills" class="bill-filter">My Bills</a>
+					</li>
+				</ul>
 			</div>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
