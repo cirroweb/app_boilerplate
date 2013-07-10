@@ -68,7 +68,7 @@
 	max-height: 100%
 
 #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span 
-	background-image: url(fancybox_sprite.png)
+	background-image: url(../img/fancybox_sprite.png)
 
 #fancybox-loading 
 	position: fixed
@@ -85,16 +85,16 @@
 #fancybox-loading div 
 	width: 44px
 	height: 44px
-	background: url('fancybox_loading.gif') center center no-repeat
+	background: url('../img/fancybox_loading.gif') center center no-repeat
 
 
 .fancybox-close 
-	background-image: url(/sites/default/files/arrows/close.jpg)
+	background-image: url(../img/close.jpg)
 	background-repeat: no-repeat
 	background-size: 12px 12px
 	position: absolute
-	top: 24px
-	right: 21px
+	top: 19px
+	right: 10px
 	width: 20px
 	height: 20px
 	cursor: pointer
@@ -108,7 +108,7 @@
 	height: 100
 	cursor: pointer
 	text-decoration: none
-	background: transparent url('blank.gif')
+	background: transparent url('../img/blank.gif')
 	-webkit-tap-highlight-color: rgba(0,0,0,0)
 	z-index: 8040
 
@@ -120,6 +120,12 @@
 .fancybox-next 
 	right: 0
 
+#fancybox-left-ico
+	left: 20px
+
+#fancybox-right-ico
+	right: 20px
+	left: auto
 
 .fancybox-nav span 
 	position: absolute
@@ -255,5 +261,5 @@
 		background-size: 44px 152px
 
 	#fancybox-loading div 
-		background-image: url('fancybox_loading@2x.gif')
+		background-image: url('../img/fancybox_loading@2x.gif')
 		background-size: 24px 24px

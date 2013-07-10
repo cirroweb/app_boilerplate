@@ -71,12 +71,7 @@
 .alert-close
 	display: none
 
-.modal-window
-	width: 400px
-	border: 2px solid black
-	padding: 10px
-	background: rgba(255,250,250,.95)
-	display: none
+
 
 // flexslider styling
 .flexslider
@@ -149,3 +144,182 @@ body .flex-page-container
 	max-width: 100%
 	overflow: hidden
 
+// Bill page css
+//--------------------------------------------------------------
+.sort-by
+	float: left
+	width: 12%
+	margin-right: 1%
+	height: 100%
+	ul
+		float: left
+		list-style: none
+		clear: both
+		margin: 0px
+		.selected
+			font-weight: 700
+			color: $gray
+		li
+			line-height: 30px
+			font-size: 12px
+			color: #A5A299
+			a
+				color: #A5A299
+				&:hover
+					color: black
+					text-decoration: none
+#bills-container
+	width: 84%
+	max-width: 1200px
+	float: left
+	margin: 100px 0 0 3%
+.page-title
+	margin-bottom: 30px
+.bill
+	float: left
+	width: 241px
+	height: 220px
+	overflow: hidden
+	margin: 10px
+	background: white
+	border: 1px solid #999 
+	&:hover
+		border: 1px solid #E4E4E4
+	.img-wrapper
+		overflow: hidden
+		height: 129px
+		img
+			width: 100%
+	.text-wrapper
+		padding: 5px 10px
+		h4
+			margin: 0px 0px 5px 0px
+		p
+			font-size: 11px
+
+// Modal Classes
+//-------------------------------------------------
+.modal-window
+	width: 500px
+	height: auto
+	border: 2px solid black
+	padding: 40px 30px
+	background: rgba(255,250,250,.95)
+	display: none
+	font-size: 13px
+	textarea
+		height: 80px
+		width: 100%
+	.submit
+		width: 100%
+		max-width: 500px
+	.social-icons
+	clear: both
+	text-align: left
+	.social
+		margin: 8px
+		cursor: pointer
+		color: black
+		line-height: 1
+		font-family: 'entypo social'
+		font-size: 45px
+		font-weight: normal
+		text-decoration: none
+		&:visited
+			color: black
+		&:hover
+			color: orange
+		&.social-img
+			&:hover
+				opacity: .5
+	.full-bill-links
+		height: 75px
+		//float: left
+		width: 50%
+		.bill-btn
+			padding: 6px 10px
+			margin: 0 5px 0 0
+			font-size: 11px
+	.share-bill-links
+		width: 50%
+		height: 100px 
+		float: right
+		text-align: right
+	.modal-buttons
+		margin: 50px 0px
+		width: 100%
+		.vote-btn
+			width: 30%
+			min-width: 120px !important
+			max-width: 500px
+			margin: 0 2% 0 0 
+			color: black
+			border: 1px solid #999 
+			&:hover
+				border: 1px solid #E4E4E4
+		.agree
+			background-color: #64B857
+		.abstain
+			background-color: #F7AF46
+		.disagree
+			background-color: #D9554F
+	.bill-title
+		font-size: 20px
+		margin-bottom: 10px
+b.title
+	font-size: 10px
+
+//  Isotope
+// --------------------------------------------------------------------------
+// Isotope Filtering //
+.isotope-item
+	z-index: 2
+
+
+.isotope-hidden.isotope-item
+	pointer-events: none
+	z-index: 1
+
+
+// Isotope CSS3 transitions //
+
+.isotope,
+.isotope .isotope-item
+	-webkit-transition-duration: 0.8s
+	-moz-transition-duration: 0.8s
+	-ms-transition-duration: 0.8s
+	-o-transition-duration: 0.8s
+	transition-duration: 0.8s
+
+
+.isotope
+	-webkit-transition-property: height, width
+	-moz-transition-property: height, width
+	-ms-transition-property: height, width
+	-o-transition-property: height, width
+	transition-property: height, width
+
+
+.isotope .isotope-item
+	-webkit-transition-property: -webkit-transform, opacity
+	-moz-transition-property: -moz-transform, opacity
+	-ms-transition-property: -ms-transform, opacity
+	-o-transition-property: -o-transform, opacity
+	transition-property: transform, opacity
+
+
+// disabling Isotope CSS3 transitions //
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition
+	-webkit-transition-duration: 0s
+	-moz-transition-duration: 0s
+	-ms-transition-duration: 0s
+	-o-transition-duration: 0s
+	transition-duration: 0s
+
+// Entypo
+@font-face
+	font-family: 'entypo social'
+	src: url('/sites/all/themes/clim/fonts/entypo-social.eot') format('eot'), url('/sites/all/themes/clim/fonts/entypo-social.woff') format('woff'), url('/sites/all/themes/clim/fonts/entypo-social.ttf') format('tff'), url('/sites/all/themes/clim/fonts/entypo-social.svg') format('svg')
