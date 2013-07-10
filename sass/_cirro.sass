@@ -149,3 +149,99 @@ body .flex-page-container
 	max-width: 100%
 	overflow: hidden
 
+// Box page css
+.sort-by
+	float: right
+	width: 15%
+	margin-right: 1%
+	height: 100%
+	ul
+		float: left
+		list-style: none
+		clear: both
+		margin: 0px
+		.selected
+			font-weight: 700
+			color: $gray
+		li
+			line-height: 30px
+			font-size: 12px
+			color: #A5A299
+			a
+				color: #A5A299
+				&:hover
+					color: black
+					text-decoration: none
+#bills-container
+	width: 84%
+	float: left
+
+.bill
+	float: left
+	width: 230px
+	height: 228px
+	overflow: hidden
+	margin: 10px
+	background: white
+	border: 1px solid #E4E4E4
+	&:hover
+		border: 1px solid #999
+	.img-wrapper
+		overflow: hidden
+		height: 129px
+		img
+			width: 100%
+	.text-wrapper
+		padding: 5px
+		
+//  Isotope
+// ----------------------------------------------------------------------------
+
+// Isotope Filtering //
+
+.isotope-item
+	z-index: 2
+
+
+.isotope-hidden.isotope-item
+	pointer-events: none
+	z-index: 1
+
+
+// Isotope CSS3 transitions //
+
+.isotope,
+.isotope .isotope-item
+	-webkit-transition-duration: 0.8s
+	-moz-transition-duration: 0.8s
+	-ms-transition-duration: 0.8s
+	-o-transition-duration: 0.8s
+	transition-duration: 0.8s
+
+
+.isotope
+	-webkit-transition-property: height, width
+	-moz-transition-property: height, width
+	-ms-transition-property: height, width
+	-o-transition-property: height, width
+	transition-property: height, width
+
+
+.isotope .isotope-item
+	-webkit-transition-property: -webkit-transform, opacity
+	-moz-transition-property: -moz-transform, opacity
+	-ms-transition-property: -ms-transform, opacity
+	-o-transition-property: -o-transform, opacity
+	transition-property: transform, opacity
+
+
+// disabling Isotope CSS3 transitions //
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition
+	-webkit-transition-duration: 0s
+	-moz-transition-duration: 0s
+	-ms-transition-duration: 0s
+	-o-transition-duration: 0s
+	transition-duration: 0s

@@ -23,7 +23,9 @@
 			self.$alert 							 = $('.alert-close-trigger');
 			self.$introSlider					 = $('#intro-slider');
 			self.$slide 							 = $('.slide');
-
+			// Variables for isotope
+			self.$container						 = $('div#bills-container');
+			self.$billButoons					 = $('ul#product-buttons a');
 
 			// Call touchstart for touchscreen functionality for mobile menu on devices
 			// if ( navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/Android/i) ){
@@ -41,6 +43,19 @@
 			self.$alert.on('click', function(){
 				self.alertClose();
 			});
+			// Click handlers for isotope
+			self.$productButton.on('click', self.filter);
+
+			// Init isotope
+			self.$container.isotope({
+				itemSelector: '.bill',
+				filter: '*'
+			});
+
+			// Fade in isotope container
+			self.$container.fadeIn();
+
+			// Init methods
 			self.navScrollClosed();
 			self.fancyInit();
 			self.flexContent();
@@ -194,6 +209,22 @@
 			}
 
 		},
+
+		// ISOTOPE FUNCTIONS
+		filter: function(e) {
+			e.preventDefault();
+
+			var self = recipes,
+					$this = $(this);
+
+			// Filter isotope
+			self.$container.isotope({filter: $this.data('filter')});
+
+			// Adjust selected class
+			self.$productButton.removeClass('selected');
+			$this.addClass('selected');
+		}
+	};
 
 
 		// Find the width of the window
