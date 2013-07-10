@@ -155,7 +155,6 @@
     		},
     		padding: 0,
     		minWidth: 350,
-    		showNavArrows: true,
     		arrows: true, 
     		beforeShow: function(){
 			    $window.on('resize.fancybox', function(){
