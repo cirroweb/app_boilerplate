@@ -44,13 +44,13 @@
 				self.alertClose();
 			});
 			// Click handlers for isotope
-			self.$productButton.on('click', self.filter);
+			//self.$productButton.on('click', self.filter);
 
 			// Init isotope
-			self.$container.isotope({
-				itemSelector: '.bill',
-				filter: '*'
-			});
+			// self.$container.isotope({
+			// 	itemSelector: '.bill',
+			// 	filter: '*'
+			// });
 
 			// Fade in isotope container
 			self.$container.fadeIn();
@@ -165,7 +165,6 @@
 			  }
 
 			});
-
 		},
 
 		alertClose: function() {
@@ -223,8 +222,7 @@
 			// Adjust selected class
 			self.$productButton.removeClass('selected');
 			$this.addClass('selected');
-		}
-	};
+		},
 
 
 		// Find the width of the window
