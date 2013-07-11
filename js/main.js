@@ -21,6 +21,11 @@
 			self.$mainNav							 = $('.main-nav');
 			self.$pageWrap						 = $('.page-wrap');
 			self.$alert 							 = $('.alert-close-trigger');
+			self.$introSlider					 = $('#intro-slider');
+			self.$slide 							 = $('.slide');
+			// Variables for isotope
+			self.$container						 = $('div#bills-container');
+			self.$billButoons					 = $('ul#product-buttons a');
 
 			// Call touchstart for touchscreen functionality for mobile menu on devices
 			// if ( navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/Android/i) ){
@@ -33,11 +38,28 @@
 			// Click handlers
 			self.$toggleNav.on('click', function(){
 				self.modernizrTransition();
+				self.initialScrollHeight();
 			});
 			self.$alert.on('click', function(){
 				self.alertClose();
 			});
+			// Click handlers for isotope
+			//self.$productButton.on('click', self.filter);
 
+			// Init isotope
+			// self.$container.isotope({
+			// 	itemSelector: '.bill',
+			// 	filter: '*'
+			// });
+
+			// Fade in isotope container
+			self.$container.fadeIn();
+
+			// Init methods
+			self.navScrollClosed();
+			self.fancyInit();
+			self.flexContent();
+			self.flexsliderInit();
 		},
 
 		// Utilizing Modernizer to check if CSS transition is supported by the browser
@@ -46,7 +68,7 @@
 			var self = this;
 
 			if ( Modernizr.csstransitions ) {
-					console.log('yes');
+					
 					self.navBarToggleCss();
 			}
 			else {
@@ -67,6 +89,25 @@
 					self.$mainNav.removeClass('nav-shown');
 				}			
 
+		},
+
+		// Function that grabs the scroll top when menu is initially shown
+		initialScrollHeight: function() {
+			var self = this;
+			self.initScroll = self.theTop;
+		},
+
+		// Close the nav if user scrolls a certain amount
+		navScrollClosed: function() {
+			var self = this;
+
+			self.theTop = $window.scrollTop();
+
+			if( self.$pageWrap.hasClass('nav-shown') === true ) {
+				if((self.theTop - self.initScroll)> 1000 || (self.theTop - self.initScroll) < -1000 ){
+					self.$toggleNav.trigger('click');
+				}
+			}
 		},
 
 		// Toggle the Nav bar using JS/Jquery animate
@@ -100,6 +141,33 @@
 
 		},
 
+		//init Fancybox for every div with correct hash and href
+		fancyInit: function() {
+			var self = this;
+
+			$(".fancybox").fancybox({
+			  helpers : {
+	        overlay : {
+            css : {
+                'background' : 'rgba(0, 0, 0, 0.75)'
+            }
+	        }
+    		},
+    		padding: 0,
+    		minWidth: 350,
+    		arrows: true, 
+    		beforeShow: function(){
+			    $window.on('resize.fancybox', function(){
+		        $.fancybox.update();
+		      });
+			  },
+			  afterClose: function(){
+			    $window.off('resize.fancybox');
+			  }
+
+			});
+		},
+
 		alertClose: function() {
 			var self = this;
 
@@ -115,6 +183,48 @@
 			self.$alert.toggle();
 
 		},
+
+		flexsliderInit: function() {
+			var self = this;
+
+			self.$introSlider.flexslider({
+				animation: "slide",
+				controlNav: true,
+				animationLoop: false,
+				slideshow: false,
+				directionNav: true,
+				after: function(){
+					self.flexContent();
+				}
+			});
+
+		},
+		flexContent: function() {
+			var self = this;
+			if(self.$slide.hasClass('flex-active-slide')){
+				$('slide-content').fadeIn('slow');
+			}
+			else {
+				$('slide-content').fadeOut('fast');
+			}
+
+		},
+
+		// ISOTOPE FUNCTIONS
+		filter: function(e) {
+			e.preventDefault();
+
+			var self = recipes,
+					$this = $(this);
+
+			// Filter isotope
+			self.$container.isotope({filter: $this.data('filter')});
+
+			// Adjust selected class
+			self.$productButton.removeClass('selected');
+			$this.addClass('selected');
+		},
+
 
 		// Find the width of the window
 		windowWidthFunction: function() {
@@ -160,7 +270,7 @@
 
 	// Window scroll
 	$window.scroll(function(){
-
+		polco.navScrollClosed();
 	});		
 
 	// Window resize

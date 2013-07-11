@@ -21,23 +21,53 @@
         <![endif]-->
 
       <header>
-        <section id="nav-bar">
+        <section class="nav-bar">
             <div class="home-nav nav-btn btn">HOME</div>
             <div class="about-nav nav-btn btn">ABOUT</div>
             <div class="contact-nav nav-btn btn">CONTACT</div>
             <div class="location-nav nav-btn btn">LOCATION</div>
         </section>
-        <div id="page-wrap">
-            <div id="toggle-nav">NAVIGATION</div>
-            <section id="home-section"></section>
-            <section id="about-section"></section>
-            <section id="contact-section"></section>
-            <section id="location-section"></section>
+        <div class="page-wrap">
+            <div class="nav-toggle">NAVIGATION</div>
+            <section class="home-section">
+                <a href="#modal-window-1" class="fancybox btn">click for modal actionz</a>
+                <a href="#modal-window-2" class="fancybox btn"> Skinny Fashion modal</a>
+                <a href="#modal-window-3" class="fancybox btn">modal-ity</a>
+            </section>
+            <section class="about-section"></section>
+            <section class="contact-section"></section>
+            <section class="location-section"></section>
         </div>
 
         <div class="alert alert-close-trigger">
             Whoa there buddy, what are you clicking like that for?
         </div>
+        <section id="modals">
+            <div id="modal-window-1" class="modal-window">
+                <a class=\"fancybox-item fancybox-close\"> </a>
+                <div class="modal-title">FIRST MODAL</div>
+                <div class="modal-description">This is the first modal description meant for describing what your seeing. cool!</div>
+                <div class="modal-pic">
+                    <img src="img/snake.jpg" />
+                </div>
+            </div>
+            <div id="modal-window-2" class="modal-window">
+                <a class=\"fancybox-item fancybox-close\"> </a>
+                <div class="modal-title">SECOND MODAL</div>
+                <div class="modal-description">This is the second modal description meant for describing what your seeing. KOWABUNGA!</div>
+                <div class="modal-pic">
+                    <img src="img/spider.jpg" />
+                </div>
+            </div>
+            <div id="modal-window-3" class="modal-window">
+                <a class=\"fancybox-item fancybox-close\"> </a>
+                <div class="modal-title">THIRD MODAL</div>
+                <div class="modal-description">This is the THIRD modal description meant for describing what your seeing. REDICAL!</div>
+                <div class="modal-pic">
+                    <img src="img/tiger.jpg" />
+                </div>
+            </div>            
+        </section>
       </header>
 
         
@@ -45,6 +75,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
+        <script src="js/jquery.fancybox.pack.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

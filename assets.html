@@ -82,7 +82,38 @@
 				  &lt;p&gt;Sample text here...&lt;/p&gt;
 				</pre>
 
+<<<<<<< HEAD
 				<hr>
+=======
+				<h3> How to add in a fancy modal using fancybox </h3>
+				<code> Note: there is a JS file for fancybox, a sass file and the init statement in the main js file that are necessary but dont need to be touched for adding modal items</code>
+				<pre>
+					// To start, create an 'a' tag wrapped around your item that will trigger modal on click
+					// it will require a class of fancybox and an href with the id of the modal content
+					&lt;a href="#modal-content-1" class="fancybox"&gt; CLICK this to see MODAL! &lt;/a&gt;
+
+					// After creating your button, or wrapping content in the fancybox 'a' tag to enable the
+					// modal, create a div with the ID you targeted with your href in the fancybox 'a' tag 
+					// and a class of modal-window that applies the correct css to your modal
+					&lt;div id="modal-content-1" class="modal-window"&gt;
+						EVERYTHING YOU WANT INSIDE YOUR MODAL POPUP GOES IN HERE IN HTML FORM 
+						&lt;div class="modal-title"&gt; TITLE &lt;/div&gt;
+						&lt;div class="modal-text"&gt; DESCRIBE WHAT THIS MODAL IS ABOUT &lt;/div&gt;
+						&lt;div class="modal-pic"&gt; &lt;img src="file/path.jpg" &gt; &lt;/div&gt;
+					 &lt;/div&gt;
+
+					 // Also note that the modal-window sass can be edited in the _cirro.sass file and is the 
+					 // styling on the modal window. Right now it has display: none so its hidden until modal 
+					 // is triggered. Another class can be used as well if desired, and is not connected to 
+					 // modal js or anything so you can also have multiple classes for multiple modal 
+					 // stylings. Just dont forget to display: none the content so thats its not shown on page
+
+					 // Further, since .modal-window HTML is (and needs) display: none, it can be placed
+					 // anywhere on the page. Currently all my modals on example page are located at the 
+					 // bottom of the document all inside &lt;section class="modal-content"&gt; just for 
+					 // organization
+				</pre>
+>>>>>>> 0b42004323f2fd522c5a2d4484e683f3a24cfcec
 
 				<section>
 					<h1>Tables</h1>
