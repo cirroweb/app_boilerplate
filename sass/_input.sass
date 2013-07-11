@@ -4,51 +4,60 @@
 //
 // ..............................................
 
+input, button, select, textarea
+	font-family: $baseFontFamily
+	font-size: 15px 
+
 input
 	&[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
 		display: inline-block
-		height: 20px
-		padding: 10px 15px
+		padding: 10px 6px 8px 6px
 		margin-bottom: 9px
-		font-size: 14px
-		line-height: 20px
-		color: #555555
+		line-height: 1
+		color: $borders
+		width: 100%
+		border: 2px solid $borders
+		color: $black
+		+transition()
+		&:focus
+			border-color: $black
+			outline: 0
+
+::input-placeholder,
+::-webkit-input-placeholder
+::-moz-input-placeholder
+::-ms-input-placeholder
+	font-family: $baseFontFamily
+	font-weight: 400
+	color: $borders
+	text-transform: capitalize
+	-webkit-font-smoothing: antialiased
 
 .uneditable-input
 	display: inline-block
 	height: 20px
 	padding: 4px 6px
 	margin-bottom: 9px
-	font-size: 14px
 	line-height: 20px
 	color: #555555
 
 input, textarea, .uneditable-input
-	width: 206px
+	&.full
+		width: 100%
 
 textarea
 	height: auto
+	min-height: 300px
+	padding: 10px 6px 8px 6px
 	background-color: #ffffff
-	border: 1px solid #cccccc
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-	-webkit-transition: border linear 0.2s, box-shadow linear 0.2s
-	-moz-transition: border linear 0.2s, box-shadow linear 0.2s
-	-o-transition: border linear 0.2s, box-shadow linear 0.2s
-	transition: border linear 0.2s, box-shadow linear 0.2s
-
-input
-	&[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
-		background-color: #ffffff
-		border: 2px solid #FFF
-		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-		-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-		-webkit-transition: border linear 0.2s, box-shadow linear 0.2s
-		-moz-transition: border linear 0.2s, box-shadow linear 0.2s
-		-o-transition: border linear 0.2s, box-shadow linear 0.2s
-		transition: border linear 0.2s, box-shadow linear 0.2s
+	border: 2px solid $borders
+	resize: none
+	width: 100%
+	margin-bottom: 9px
+	+transition()
+	&:focus
+		border-color: $black
+		outline: 0
 
 .uneditable-input
 	background-color: #ffffff
@@ -61,20 +70,10 @@ input
 	-o-transition: border linear 0.2s, box-shadow linear 0.2s
 	transition: border linear 0.2s, box-shadow linear 0.2s
 
-textarea:focus
-	border-color: $yellow
-	outline: 0
-
-input
-	&[type="text"]:focus, &[type="password"]:focus, &[type="datetime"]:focus, &[type="datetime-local"]:focus, &[type="date"]:focus, &[type="month"]:focus, &[type="time"]:focus, &[type="week"]:focus, &[type="number"]:focus, &[type="email"]:focus, &[type="url"]:focus, &[type="search"]:focus, &[type="tel"]:focus, &[type="color"]:focus
-		border-color: $yellow
-		outline: 0
-
 .uneditable-input:focus
 	border-color: rgba(82, 168, 236, 0.8)
 	outline: 0
-	outline: thin dotted \9
-	// IE6-9
+	outline: thin dotted
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
 	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
@@ -91,9 +90,7 @@ input
 
 select, input[type="file"]
 	height: 30px
-	// In IE7, the height of the select element cannot be changed by height, only font-size
 	*margin-top: 4px
-	// For IE7, add top margin to align select with labels
 	line-height: 30px
 
 select
@@ -510,41 +507,47 @@ fieldset
 	padding: 0
 	margin: 0
 	border: 0
-
-legend
-	display: block
-	width: 100%
-	padding: 0
-	margin-bottom: 20px
-	font-size: 21px
-	line-height: 40px
-	color: #333333
-	border: 0
-	border-bottom: 1px solid #e5e5e5
-	small
-		font-size: 15px
-		color: $grayLight
-
-label, input, button, select, textarea
-	font-size: 14px
-	font-weight: normal
-	line-height: 20px
-
-input, button, select, textarea
-	font-family: $baseFontFamily
+	legend
+		display: block
+		width: 100%
+		padding: 0
+		margin-bottom: 20px
+		border: 0
+		text-align: center
+		@extend h2
+	label
+		display: block
+		margin-bottom: 5px
+	.help-block
+		text-align: center
+		margin: 20px 0 0
+		font-size: 16px
+		font-style: italic
 
 label
 	display: block
 	margin-bottom: 5px
+	font-size: 13px
+	font-weight: 600
+	text-transform: uppercase
 
-select, textarea
+select
 	display: inline-block
-	height: 20px
-	padding: 4px 6px
+	height: 35px
+	background: url(../img/down_arrow.jpg) no-repeat 94% center white
+	padding: 6px 15px
 	margin-bottom: 9px
+	border: 2px solid $borders
 	font-size: 14px
 	line-height: 20px
 	color: #555555
+	-webkit-appearance: none
+	-moz-appearance: none
+	appearance: none
 	-webkit-border-radius: 3px
 	-moz-border-radius: 3px
 	border-radius: 3px
+	&:focus
+		outline: none
+	&:hover
+		border: 2px solid black

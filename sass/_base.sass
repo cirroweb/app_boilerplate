@@ -73,10 +73,15 @@ a
 // ..............................................
 
 ::selection
-	background: $yellow
+	background: $white
+	color: #00f
 
 ::-moz-selection
-	background: $yellow
+	background: $white
+	color: #00f
+
+.center
+	margin: 0 auto
 
 .left
 	float: left
@@ -102,6 +107,11 @@ a
 .highlight
 	background: #ffff99
 
+.spacer
+	height: 50px
+	width: 100%
+	clear: both
+
 img
 	width: auto
 	height: auto
@@ -119,8 +129,6 @@ img
 
 button, input, select, textarea
 	margin: 0
-	font-size: 100%
-	vertical-align: middle
 
 button, input
 	*overflow: visible
@@ -211,6 +219,9 @@ h1, h2, h3
 	line-height: 1.4
 	text-rendering: optimizelegibility
 	color: $black
+	margin-bottom: 5px
+	text-transform: uppercase
+	letter-spacing: 0.1em
 
 h1
 	font-size: 30px
@@ -393,29 +404,14 @@ pre
 	color: $white
 	border: none
 	white-space: nowrap
-	border-radius: 50px
 	text-align: center
 	cursor: pointer
-	background-color: $grayDarker
-	font-weight: 500
+	background-color: $black
+	font-weight: 600
 	line-height: 14px
 	letter-spacing: 1px
 	text-transform: uppercase
-	-webkit-transition-property: color, background-color
-	-webkit-transition-duration: 0.1s
-	-webkit-transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1)
-	-moz-transition-property: color, background-color
-	-moz-transition-duration: 0.1s
-	-moz-transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1)
-	-ms-transition-property: color, background-color
-	-ms-transition-duration: 0.1s
-	-ms-transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1)
-	-o-transition-property: color, background-color
-	-o-transition-duration: 0.1s
-	-o-transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1)
-	transition-property: color, background-color
-	transition-duration: 0.1s
-	transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1)
+	+transition()
 	font-size: 14px
 	-moz-user-select: -moz-none
 	-webkit-user-select: none
@@ -423,26 +419,27 @@ pre
 	-o-user-select: none
 	user-select: none
 	&:hover
-		background-color: $grayDark
+		background-color: $primaryColor
 		color: #fcfcfc
 		text-decoration: none
 	&.active, &:active
 		outline: 0
 	&:visited
 		color: white
+	&:focus
+		outline: none
 	&.disabled, &[disabled]
 		background: $gray
-		border: 4px solid $gray
+		color: white
 		&:hover
 			background: $gray
-			border: 4px solid $gray
 	&.btn-hollow
-		border: 4px solid $primaryColor
-		color: $primaryColor
+		border: 2px solid $black
+		color: $black
 		background: none
 		&:hover
-			background: $primaryColor
-			color: white
+			color: $primaryColor
+			border: 2px solid $primaryColor
 			text-decoration: none
 		&.active, &:active
 			outline: 0
@@ -450,17 +447,54 @@ pre
 			opacity: 0.4
 			&:hover
 				border: 4px solid #111
+	.icon
+		position: relative
+		line-height: 0
+		top: 2px
+		font-size: 2em
+		margin-right: 3px
 	&.btn-small
 		padding: 10px
 		font-size: 12px
 		max-width: 20em
 		[class^="icon-"]
 			margin-top: 0
+	&.full
+		width: 100%
+	&.rounded
+		border-radius: 50px
 
 button.btn
 	*padding-top: 3px
 	*padding-bottom: 3px
 
+
+.pagination
+	margin-bottom: 20px
+	ul
+		display: inline-block
+		margin-bottom: 0
+		margin-left: 0
+		-webkit-border-radius: 4px
+		-moz-border-radius: 4px
+		border-radius: 4px
+		-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
+		-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
+		> li
+			display: inline
+			&:first-child a
+				border-left-width: 1px
+			a
+				float: left
+				padding: 6px 15px
+				line-height: 20px
+				text-decoration: none
+				background-color: #FFF
+				border: 1px solid $borders
+				border-left-width: 0
+				&.active
+					background: $grayDark
 
 // ..............................................
 //
@@ -472,21 +506,31 @@ button.btn
 	position: fixed
 	z-index: 1000
 	top: 30px
-	width: 75%
-	left: 12.5%
+	width: 50%
+	left: 25%
 	padding: 8px 35px 8px 14px
 	margin-bottom: 20px
 	color: $red
 	background-color: white
 	border: 2px solid $red
 	border-radius: 10px
+	box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3)
 	h4
 		margin: 0
 	.close
 		position: relative
-		top: -2px
-		right: -21px
-		line-height: 20px
+		top: 2px
+		right: 3px
+		line-height: 1
+		border: 1px solid white
+		background: white
+		font-weight: bold
+		font-size: 18px
+		color: $black
+		vertical-align: baseline
+		&:focus
+			outline: none
+
 		
 .alert-success
 	color: $green

@@ -23,27 +23,33 @@
 				<![endif]-->
 
 			<div class="container">
-				<!--<div class="alert">Whoa there buddy, what are you clicking like that for?</div>-->
 
-				<section class="half"> 
-					<h1>Heading 1</h1> 
-					<p>
-						Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve a 7 to 10-year term for using his military knowledge to kill a drunk man who had been attempting to assault his pregnant wife Tricia (Monica Potter). Eight years later, Poe is paroled on good conduct, and is eager to see his daughter Casey (Landry Allbright) whom he has never met.
-					</p>
-					<h2>Heading 2</h2> 
-					<p>
-						Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve a 7 to 10-year term for using his military knowledge to kill a drunk man who had been attempting to assault his pregnant wife Tricia (Monica Potter). Eight years later, Poe is paroled on good conduct, and is eager to see his daughter Casey (Landry Allbright) whom he has never met.
-					</p>
-					<h3>Heading 3</h3> 
-					<p>
-						Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve a 7 to 10-year term for using his military knowledge to kill a drunk man who had been attempting to assault his pregnant wife Tricia (Monica Potter). Eight years later, Poe is paroled on good conduct, and is eager to see his daughter Casey (Landry Allbright) whom he has never met.
-					</p>
-				</section>
+				<!--<div class="alert">
+					<button class="close" data-dismiss="alert">×</button>
+					Whoa there buddy, what are you clicking like that for?
+				</div>-->
 
-				<hr>
+				<div class="wrap">
+					<section class="half"> 
+						<h1>Heading 1</h1> 
+						<p>
+							Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve a 7 to 10-year term for using his military knowledge to kill a drunk man who had been attempting to assault his pregnant wife Tricia (Monica Potter). Eight years later, Poe is paroled on good conduct, and is eager to see his daughter Casey (Landry Allbright) whom he has never met.
+						</p>
+						<h2>Heading 2</h2> 
+						<p>
+							Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve a 7 to 10-year term for using his military knowledge to kill a drunk man who had been attempting to assault his pregnant wife Tricia (Monica Potter). Eight years later, Poe is paroled on good conduct, and is eager to see his daughter Casey (Landry Allbright) whom he has never met.
+						</p>
+						<h3>Heading 3</h3> 
+						<p>
+							Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve a 7 to 10-year term for using his military knowledge to kill a drunk man who had been attempting to assault his pregnant wife Tricia (Monica Potter). Eight years later, Poe is paroled on good conduct, and is eager to see his daughter Casey (Landry Allbright) whom he has never met.
+						</p>
+					</section>
+				</div>
 
-				<section>
-					
+					<hr>
+					<!-- B L O C K Q U O T E S----------------------------- -->
+					<section>
+					<h3>Blockquotes</h3>
 					<blockquote>
 					  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 					  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
@@ -51,7 +57,8 @@
 				</section>
 
 				<hr>
-
+				<!-- L I S T S ----------------------------- -->
+				<h3>Lists</h3>
 				<section>
 					<ul>
 						<li>Tree</li>
@@ -73,18 +80,8 @@
 					</ol>
 				</section>
 
+				<!--
 				<hr>
-
-				<code>
-					this is what i mean about code
-				</code>
-				<pre>
-				  &lt;p&gt;Sample text here...&lt;/p&gt;
-				</pre>
-
-<<<<<<< HEAD
-				<hr>
-=======
 				<h3> How to add in a fancy modal using fancybox </h3>
 				<code> Note: there is a JS file for fancybox, a sass file and the init statement in the main js file that are necessary but dont need to be touched for adding modal items</code>
 				<pre>
@@ -112,11 +109,12 @@
 					 // anywhere on the page. Currently all my modals on example page are located at the 
 					 // bottom of the document all inside &lt;section class="modal-content"&gt; just for 
 					 // organization
-				</pre>
->>>>>>> 0b42004323f2fd522c5a2d4484e683f3a24cfcec
+				</pre>-->
+
+				<hr>
 
 				<section>
-					<h1>Tables</h1>
+					<h3>Tables</h3>
 					<pre>&lt;table class="table"&gt; ... &lt;/table&gt;</pre>
 					<table class="table">
 						<tbody>
@@ -140,6 +138,8 @@
 							</tr>
 						</tbody>
 					</table>  
+
+					<div class="spacer"></div>
 
 					<pre>&lt;table class="table table-bordered"&gt; ... &lt;/table&gt;</pre>
 					<table class="table table-bordered">
@@ -170,30 +170,61 @@
 
 				<section>
 					<h3>Buttons</h3>
+					<p>To add a button with an icon, add a span with a class of icon in the button before the text</p>
 					<a class="btn" href="#">Button Uno</a>
 					<button class="btn">Button Two</button>
+					<a class="btn btn-hollow">
+						<span class="icon">&#127942;</span> Victory
+					</a>
 				</section>
+
+				<hr>
 
 				<section>
 					<h3>Forms</h3>
-					<input type="textfield" />
-					<input type="textfield" />
-					<input type="textfield" placeholder="password"/>
-					<textarea placeholder="write something"></textarea>
-					<form>
-					  <fieldset>
-					    <legend>Legend</legend>
-					    <label>Label name</label>
-					    <input type="text" placeholder="Type something…">
-					    <span class="help-block">Example block-level help text here.</span>
-					    <label class="checkbox">
-					      <input type="checkbox"> Check me out
-					    </label>
-					    <button type="submit" class="btn">Submit</button>
-					  </fieldset>
-					</form>
+					<p>All forms default to 100%. If you want them smaller wrap a  group of them with a width wrapper found in the scaffolding</p>
+					<p class="text-warning">! All associated buttons should match the width of the input field. For full width buttons add the class .full</p>
+					<input type="text" placeholder="Social Security Number"/>
+					<input type="text" placeholder="Dental Records"/>
+					<input type="text" placeholder="Legal Name"/>
+					<textarea placeholder="Write Me a Love Letter"></textarea>
+					<button class="btn full">Submit</button>
+
+					<div class="spacer"></div>
+					<h3>Spacer</h3>
+					<p>^^^^^ I used a spacer div above and below this text. A class of .spacer adds a standard 50px space </p>
+					<div class="spacer"></div>
+
+					<div class="wrap">
+						<div class="half">
+							<input type="text" class="full"/>
+							<button class="btn full">Submit</button>
+						</div>
+					</div>
+					<hr>
+					<h3>Forms</h3>
+					<div class="wrap">
+						<div class="half">
+							<form>
+							  <fieldset>
+							    <legend>Legend</legend>
+							    <label>Label name</label>
+							    <input type="text" placeholder="Type something…">
+							    <span class="help-block">Example block-level help text here.
+							    </span>
+							    <button type="submit" class="btn full">Submit</button>
+							  </fieldset>
+							</form>
+						</div>
+					</div>
+
+					<div class="spacer"></div>
+
 					<label class="checkbox">
-					  <input type="checkbox" value="">
+						<input type="checkbox"> Check me out
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" value="">
 					  Option one is this and that—be sure to include why it's great
 					</label>
 					 
@@ -201,6 +232,8 @@
 					  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
 					  Option one is this and that—be sure to include why it's great
 					</label>
+
+					<div class="spacer"></div>
 
 					<select>
 					  <option>1</option>
@@ -212,11 +245,12 @@
 				</section>
 
 				<hr>
+				<h3>Pager</h3>
 
 				<div class="pagination">
 				  <ul>
 				    <li><a href="#">Prev</a></li>
-				    <li><a href="#">1</a></li>
+				    <li><a href="#" class="active">1</a></li>
 				    <li><a href="#">2</a></li>
 				    <li><a href="#">3</a></li>
 				    <li><a href="#">4</a></li>
