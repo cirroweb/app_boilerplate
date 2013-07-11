@@ -37,10 +37,10 @@ html
 body
 	margin: 0
 	font-family: $baseFontFamily
-	font-size: 15px
+	font-size: 14px
 	font-weight: 400
-	line-height: 1.4
-	color: $black
+	line-height: 1.6
+	color: $grayDarker
 	background-color: $bodyBackground
 
 // Drupal Override
@@ -204,28 +204,22 @@ cite
 .text-success
 	color: $green
 
-h1, h2, h3, h4, h5, h6
+h1, h2, h3
 	margin: 0 0 10px 0
 	font-family: $headingsFontFamily
-	font-weight: 500
+	font-weight: 600
 	line-height: 1.4
-	text-transform: uppercase
 	text-rendering: optimizelegibility
+	color: $black
 
 h1
-	font-size: 34px
+	font-size: 30px
 
 h2
-	font-size: 28px
+	font-size: 24px
 
 h3
-	font-size: 22px
-
-h4
 	font-size: 18px
-
-h5
-	font-size: 14px
 
 ul, ol
 	padding: 0
@@ -283,7 +277,7 @@ dd
 hr
 	margin: 50px 0
 	border: 0
-	border-top: 3px solid $hrColor
+	border-top: 1px solid $grayDark
 	clear: both
 
 abbr
@@ -394,22 +388,41 @@ pre
 // ..............................................
 
 .btn
-	display: inline
-	width: 100%
-	max-width: 24em
-	padding: 20px
-	margin: 0 auto 1em
-	border: 4px solid $primaryColor
-	background: $primaryColor
-	box-sizing: border-box
-	font-weight: 500
+	display: inline-block
+	padding: 14px 27px 14px 29px
+	color: $white
+	border: none
+	white-space: nowrap
+	border-radius: 50px
 	text-align: center
-	color: white
-	text-transform: uppercase
-	text-decoration: none
 	cursor: pointer
+	background-color: $grayDarker
+	font-weight: 500
+	line-height: 14px
+	letter-spacing: 1px
+	text-transform: uppercase
+	-webkit-transition-property: color, background-color
+	-webkit-transition-duration: 0.1s
+	-webkit-transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1)
+	-moz-transition-property: color, background-color
+	-moz-transition-duration: 0.1s
+	-moz-transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1)
+	-ms-transition-property: color, background-color
+	-ms-transition-duration: 0.1s
+	-ms-transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1)
+	-o-transition-property: color, background-color
+	-o-transition-duration: 0.1s
+	-o-transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1)
+	transition-property: color, background-color
+	transition-duration: 0.1s
+	transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1)
+	font-size: 14px
+	-moz-user-select: -moz-none
+	-webkit-user-select: none
+	-ms-user-select: none
+	-o-user-select: none
+	user-select: none
 	&:hover
-		border: 4px solid $grayDark
 		background-color: $grayDark
 		color: #fcfcfc
 		text-decoration: none
