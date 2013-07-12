@@ -429,10 +429,11 @@ pre
 	&:focus
 		outline: none
 	&.disabled, &[disabled]
-		background: $gray
+		background: $grayDark
 		color: white
+		cursor: auto !important
 		&:hover
-			background: $gray
+			background: $grayDark
 	&.btn-hollow
 		border: 2px solid $black
 		color: $black
@@ -445,8 +446,12 @@ pre
 			outline: 0
 		&.disabled, &[disabled]
 			opacity: 0.4
+			border: 2px solid $grayDark
+			color: $grayDark
+			cursor: auto !important
 			&:hover
-				border: 4px solid #111
+				border: 2px solid $grayDark
+				background: white
 	.icon
 		position: relative
 		line-height: 0
@@ -552,7 +557,7 @@ button.btn
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
 	white-space: nowrap
 	vertical-align: baseline
-	background-color: $grayDark
+	background-color: $grayDarker
 
 .label
 	padding: 1px 4px 2px
@@ -570,6 +575,9 @@ a
 
 .label-important, .badge-important
 	background-color: $red
+
+.label-warning, .badge-warning
+	background-color: $yellow
 
 .label-important[href], .badge-important[href]
 	background-color: #953b39
