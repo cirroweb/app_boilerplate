@@ -54,6 +54,9 @@
 					<!-- B L O C K Q U O T E S----------------------------- -->
 					<section>
 					<h3>Blockquotes</h3>
+<pre>
+&lt;blockquote&gt; ... &lt;/blockquote&gt;
+</pre>
 					<blockquote>
 					  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 					  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
@@ -174,13 +177,31 @@
 
 				<section>
 					<h3>Buttons</h3>
-					<p>To add a button with an icon, add a span with a class of icon in the button before the text</p>
+					<p>To add a button with an icon, add a span with a class of icon in the button before the text. We use Entypo icon font for all icons. <a href="http://www.entypo.com/" target="_blank">http://www.entypo.com/</a></p>
+					<pre>
+&lt;div class="btn"&gt; Button Uno &lt;/div&gt;
+
+&lt;button class="btn" disabled&gt; Button Two &lt;/button&gt;
+
+&lt;div class="btn disabled"&gt; Button Three &lt;/div&gt;
+
+&lt;div class="btn disabled"&gt; Button Four &lt;/div&gt;
+
+&lt;div class="btn disabled"&gt; 
+  &lt;span class="icon"&gt; &#127942; &lt;/span&gt;Victory
+&lt;/div&gt;
+
+&lt;div class="btn rounded"&gt; Rounded &lt;/div&gt;
+</pre>
 					<a class="btn" href="#">Button Uno</a>
 					<button class="btn">Button Two</button>
-					<button class="btn" disabled>Button Two</button>
-					<button class="btn btn-hollow" disabled>Button Two</button>
+					<button class="btn" disabled>Button Three</button>
+					<button class="btn btn-hollow" >Button Four</button>
 					<a class="btn btn-hollow">
 						<span class="icon">&#127942;</span> Victory
+					</a>
+					<a class="btn rounded">
+						Rounded
 					</a>
 				</section>
 
@@ -188,7 +209,17 @@
 
 				<section>
 					<h3>Labels</h3>
-					<div class="spacer"></div>
+<pre>
+&lt;span class="label"&gt; Default &lt;/span&gt;
+
+&lt;span class="label label-success"&gt; Success &lt;/span&gt;
+
+&lt;span class="label label-warning"&gt; Warning &lt;/span&gt;
+
+&lt;span class="label label-important"&gt; Important &lt;/span&gt;
+
+&lt;span class="label label-info"&gt; Info &lt;/span&gt;
+</pre>
 					<span class="label">Default</span>
 					<span class="label label-success">Success</span>
 					<span class="label label-warning">Warning</span>
@@ -197,6 +228,15 @@
 
 					<div class="spacer"></div>
 					<h3>Badges</h3>
+<pre>
+&lt;span class="badge"&gt; 420 &lt;/span&gt;
+
+&lt;span class="badge badge-success"&gt; 4 &lt;/span&gt;
+
+&lt;span class="badge badge-warning"&gt; 2 &lt;/span&gt;
+
+&lt;span class="badge badge-important"&gt; 0 &lt;/span&gt;
+</pre>
 					<span class="badge">420</span>
 					<span class="badge badge-success">4</span>
 					<span class="badge badge-warning">2</span>
@@ -271,6 +311,21 @@
 
 				<hr>
 				<h3>Pager</h3>
+<pre>
+&lt;div class="pagination"&gt;
+  &lt;ul&gt;
+    &lt;li&gt; 
+      &lt;a&gt; Prev &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt; 
+      &lt;a class="active"&gt; 1 &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt; 
+      &lt;a&gt; 2 &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
 
 				<div class="pagination">
 				  <ul>
