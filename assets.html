@@ -43,6 +43,10 @@
 						<p>
 							Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve a 7 to 10-year term for using his military knowledge to kill a drunk man who had been attempting to assault his pregnant wife Tricia (Monica Potter). Eight years later, Poe is paroled on good conduct, and is eager to see his daughter Casey (Landry Allbright) whom he has never met.
 						</p>
+						<h4>Heading 4</h4> 
+						<p>
+							Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve a 7 to 10-year term for using his military knowledge to kill a drunk man who had been attempting to assault his pregnant wife Tricia (Monica Potter). Eight years later, Poe is paroled on good conduct, and is eager to see his daughter Casey (Landry Allbright) whom he has never met.
+						</p>
 					</section>
 				</div>
 
@@ -284,15 +288,47 @@
 			<hr>
 				<div class="container">
 					<h3>Scaffolding</h3>
+					<p>
+						Our goal was to create a scaffolding structure that was simplified down to a few basic structures, halfs, thirds, and quarters. Often times scaffolding helpers are too intensive and this is an attempt to have truely an utilitarian scaffolding based simply on our needs.
+					</p>
+					<h4>Use as paragraph scaffolding</h4>
+					<pre>
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="half"&gt; 
+      &lt;div class="inner"&gt; ... &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="quarter"&gt;
+       &lt;div class="inner"&gt; ... &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="quarter"&gt;
+       &lt;div class="inner"&gt; ... &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+					</pre>
+						<h4>Simple layout scaffolding</h4>
+						<p>The scaffolding can also be used as a simple layout tool. In this case just use the container and the associated spacer, leaving out the row wrapper and the inner div. </p>
+					<pre>
+&lt;div class="container"&gt;
+  &lt;div class="half"&gt; ... &lt;/div&gt;
+  &lt;div class="half"&gt; ... &lt;/div&gt;   
+&lt;/div&gt;
+					</pre>
 					<div class="row">
 						<div class="half">
 							<div class="inner">
 								Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve a 7 to 10-year term for using his military knowledge to kill a drunk man who had been attempting to assault his pregnant wife Tricia (Monica Potter). Eight years later, Poe is paroled on good conduct, and is eager to see his daughter Casey (Landry Allbright) whom he has never met.
 							</div>
 						</div>
-						<div class="half">
+						<div class="quarter">
 							<div class="inner">
-								Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve a 7 to 10-year term for using his military knowledge to kill a drunk man who had been attempting to assault his pregnant wife Tricia (Monica Potter). Eight years later, Poe is paroled on good conduct, and is eager to see his daughter Casey (Landry Allbright) whom he has never met.
+								Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve
+							</div>
+						</div>
+						<div class="quarter">
+							<div class="inner">
+								Honorably Discharged Army Ranger Cameron Poe is sentenced to a maximum-security federal penitentiary to serve 
 							</div>
 						</div>
 					</div>
@@ -340,6 +376,7 @@
 						</div>
 					</div>
 				</div>
+				<div class="spacer"></div>
 
 				<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 				<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
